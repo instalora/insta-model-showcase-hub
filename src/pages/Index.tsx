@@ -20,12 +20,12 @@ const modelData = {
   heroImage: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop',
   images: [
-    { id: '1', src: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format&fit=crop', alt: 'Sophia in casual streetwear', type: 'image' },
-    { id: '2', src: 'https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?q=80&w=1974&auto=format&fit=crop', alt: 'Sophia in formal attire', type: 'image' },
-    { id: '3', src: 'https://images.unsplash.com/photo-1618721405821-80ebc4b63d26?q=80&w=1780&auto=format&fit=crop', alt: 'Sophia portrait', type: 'image' },
-    { id: '4', src: 'https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?q=80&w=1971&auto=format&fit=crop', alt: 'Sophia in summer outfit', type: 'image' },
-    { id: '5', src: 'https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?q=80&w=1944&auto=format&fit=crop', alt: 'Sophia in business casual', type: 'image' },
-    { id: '6', src: 'https://images.unsplash.com/photo-1524041255072-7da0525d6b34?q=80&w=1780&auto=format&fit=crop', alt: 'Sophia outdoor photoshoot', type: 'image' },
+    { id: '1', src: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format&fit=crop', alt: 'Sophia in casual streetwear', type: 'image' as const },
+    { id: '2', src: 'https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?q=80&w=1974&auto=format&fit=crop', alt: 'Sophia in formal attire', type: 'image' as const },
+    { id: '3', src: 'https://images.unsplash.com/photo-1618721405821-80ebc4b63d26?q=80&w=1780&auto=format&fit=crop', alt: 'Sophia portrait', type: 'image' as const },
+    { id: '4', src: 'https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?q=80&w=1971&auto=format&fit=crop', alt: 'Sophia in summer outfit', type: 'image' as const },
+    { id: '5', src: 'https://images.unsplash.com/photo-1588516903720-8ceb67f9ef84?q=80&w=1944&auto=format&fit=crop', alt: 'Sophia in business casual', type: 'image' as const },
+    { id: '6', src: 'https://images.unsplash.com/photo-1524041255072-7da0525d6b34?q=80&w=1780&auto=format&fit=crop', alt: 'Sophia outdoor photoshoot', type: 'image' as const },
   ],
   stats: {
     generatedImages: 1200,
