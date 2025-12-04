@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isModelsActive = pathname.startsWith('/models') || pathname.startsWith('/model/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,9 +45,9 @@ const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/models"
-            className={({ isActive }) =>
+            className={() =>
               `text-sm font-medium transition-colors ${
-                isActive ? "text-primary" : "hover:text-primary"
+                isModelsActive ? "text-primary" : "hover:text-primary"
               }`
             }
           >
@@ -132,9 +134,9 @@ const Header: React.FC = () => {
             </NavLink>
             <NavLink
               to="/models"
-              className={({ isActive }) =>
+              className={() =>
                 `text-lg font-medium transition-colors ${
-                  isActive ? "text-primary" : "hover:text-primary"
+                  isModelsActive ? "text-primary" : "hover:text-primary"
                 }`
               }
               onClick={() => setIsMobileMenuOpen(false)}
