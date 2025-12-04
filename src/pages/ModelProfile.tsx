@@ -10,6 +10,7 @@ import Counter from '@/components/Counter';
 import SocialEngagement from '@/components/SocialEngagement';
 import GenerationModal from '@/components/GenerationModal';
 import PurchaseModal from '@/components/PurchaseModal';
+import ModelCard from '@/components/ModelCard';
 import { toast } from "@/components/ui/use-toast";
 
 // Mock data for different models
@@ -183,6 +184,32 @@ const ModelProfile = () => {
                 suffix="+"
                 title="Creative Prompts"
               />
+            </div>
+          </div>
+
+          {/* Similar Models Section */}
+          <div className="mt-16 mb-8">
+            <h2 className="text-2xl font-bold font-display mb-8 text-center">Similar Models</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+              {Object.values(modelsData)
+                .filter(m => m.id !== modelData.id)
+                .map((model, index) => (
+                  <ModelCard 
+                    key={model.id}
+                    model={{
+                      id: model.id,
+                      name: model.name,
+                      niche: model.niche.split(' ')[0],
+                      subtitle: model.niche,
+                      image: model.avatar,
+                      likes: model.social.likes,
+                      brandUses: model.stats.brandCollaborations,
+                      comments: model.social.comments,
+                    }}
+                    index={index}
+                  />
+                ))}
             </div>
           </div>
         </div>
