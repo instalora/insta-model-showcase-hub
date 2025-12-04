@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Header: React.FC = () => {
@@ -30,18 +31,46 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="/" className="text-sm font-medium hover:text-primary transition-colors">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `text-sm font-medium transition-colors ${
+                isActive ? "text-primary" : "hover:text-primary"
+              }`
+            }
+          >
             Discover
-          </a>
-          <a href="/models" className="text-sm font-medium hover:text-primary transition-colors">
+          </NavLink>
+          <NavLink
+            to="/models"
+            className={({ isActive }) =>
+              `text-sm font-medium transition-colors ${
+                isActive ? "text-primary" : "hover:text-primary"
+              }`
+            }
+          >
             Models
-          </a>
-          <a href="/pricing" className="text-sm font-medium hover:text-primary transition-colors">
+          </NavLink>
+          <NavLink
+            to="/pricing"
+            className={({ isActive }) =>
+              `text-sm font-medium transition-colors ${
+                isActive ? "text-primary" : "hover:text-primary"
+              }`
+            }
+          >
             Pricing
-          </a>
-          <a href="/about" className="text-sm font-medium hover:text-primary transition-colors">
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `text-sm font-medium transition-colors ${
+                isActive ? "text-primary" : "hover:text-primary"
+              }`
+            }
+          >
             About
-          </a>
+          </NavLink>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -90,10 +119,50 @@ const Header: React.FC = () => {
             </button>
           </div>
           <nav className="flex flex-col items-center space-y-6 mt-20">
-            <a href="/" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Discover</a>
-            <a href="/models" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Models</a>
-            <a href="/pricing" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Pricing</a>
-            <a href="/about" className="text-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `text-lg font-medium transition-colors ${
+                  isActive ? "text-primary" : "hover:text-primary"
+                }`
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Discover
+            </NavLink>
+            <NavLink
+              to="/models"
+              className={({ isActive }) =>
+                `text-lg font-medium transition-colors ${
+                  isActive ? "text-primary" : "hover:text-primary"
+                }`
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Models
+            </NavLink>
+            <NavLink
+              to="/pricing"
+              className={({ isActive }) =>
+                `text-lg font-medium transition-colors ${
+                  isActive ? "text-primary" : "hover:text-primary"
+                }`
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Pricing
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `text-lg font-medium transition-colors ${
+                  isActive ? "text-primary" : "hover:text-primary"
+                }`
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </NavLink>
             <div className="flex flex-col space-y-4 mt-8 w-full px-8">
               <Button variant="outline" className="w-full">Log in</Button>
               <Button className="w-full">Sign up</Button>
