@@ -54,14 +54,14 @@ const Header: React.FC = () => {
             Models
           </NavLink>
           <NavLink
-            to="/pricing"
+            to="/brands"
             className={({ isActive }) =>
               `text-sm font-medium transition-colors ${
                 isActive ? "text-primary" : "hover:text-primary"
               }`
             }
           >
-            Pricing
+            For Brands
           </NavLink>
           <NavLink
             to="/about"
@@ -144,7 +144,7 @@ const Header: React.FC = () => {
               Models
             </NavLink>
             <NavLink
-              to="/pricing"
+              to="/brands"
               className={({ isActive }) =>
                 `text-lg font-medium transition-colors ${
                   isActive ? "text-primary" : "hover:text-primary"
@@ -152,7 +152,7 @@ const Header: React.FC = () => {
               }
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Pricing
+              For Brands
             </NavLink>
             <NavLink
               to="/about"
