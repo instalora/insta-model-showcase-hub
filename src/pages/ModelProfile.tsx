@@ -224,27 +224,33 @@ const ModelProfile = () => {
                   Become a model
                 </button>
               </div>
-              <div className="flex-1 grid grid-cols-2 gap-3">
-                <img 
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" 
-                  alt="AI model example"
-                  className="rounded-2xl w-full aspect-square object-cover"
-                />
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" 
-                  alt="AI model example"
-                  className="rounded-2xl w-full aspect-square object-cover"
-                />
-                <img 
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop" 
-                  alt="AI model example"
-                  className="rounded-2xl w-full aspect-[4/5] object-cover"
-                />
-                <img 
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" 
-                  alt="AI model example"
-                  className="rounded-2xl w-full aspect-[4/5] object-cover"
-                />
+              <div className="flex-1 grid grid-cols-2 gap-3 overflow-hidden">
+                {/* Left column - girls floating down */}
+                <div className="flex flex-col gap-3 animate-float-down">
+                  <img 
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" 
+                    alt="AI model example"
+                    className="rounded-2xl w-full aspect-square object-cover"
+                  />
+                  <img 
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop" 
+                    alt="AI model example"
+                    className="rounded-2xl w-full aspect-[4/5] object-cover"
+                  />
+                </div>
+                {/* Right column - guys floating up */}
+                <div className="flex flex-col gap-3 animate-float-up">
+                  <img 
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" 
+                    alt="AI model example"
+                    className="rounded-2xl w-full aspect-square object-cover"
+                  />
+                  <img 
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" 
+                    alt="AI model example"
+                    className="rounded-2xl w-full aspect-[4/5] object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
