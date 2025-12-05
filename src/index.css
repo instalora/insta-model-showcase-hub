@@ -147,3 +147,31 @@
     @apply hover:shadow-xl hover:shadow-black/10;
   }
 }
+
+@layer utilities {
+  @keyframes float-down {
+    0%, 100% {
+      transform: translateY(-8px);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+  
+  @keyframes float-up {
+    0%, 100% {
+      transform: translateY(8px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  .animate-float-down {
+    animation: float-down 4s ease-in-out infinite;
+  }
+  
+  .animate-float-up {
+    animation: float-up 4s ease-in-out infinite;
+  }
+}
