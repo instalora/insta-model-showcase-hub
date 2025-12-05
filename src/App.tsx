@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Models from "./pages/Models";
 import ModelProfile from "./pages/ModelProfile";
+import BecomeModel from "./pages/BecomeModel";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/models" element={<Models />} />
           <Route path="/model/:id" element={<ModelProfile />} />
+          <Route path="/become-model" element={<BecomeModel />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

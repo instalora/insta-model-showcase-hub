@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
@@ -220,9 +220,9 @@ const ModelProfile = () => {
                 <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
                   Want to be an<br />AI model?
                 </h2>
-                <button className="bg-foreground text-background px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity">
+                <Link to="/become-model" className="inline-block bg-foreground text-background px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity">
                   Become a model
-                </button>
+                </Link>
               </div>
               <div className="flex-1 grid grid-cols-2 gap-3 overflow-hidden">
                 {/* Left column - girls floating down */}
