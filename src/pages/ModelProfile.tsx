@@ -212,6 +212,42 @@ const ModelProfile = () => {
                 ))}
             </div>
           </div>
+
+          {/* Become an AI Model Section */}
+          <div className="mt-16 mb-8">
+            <div className="bg-muted rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
+                  Want to be an<br />AI model?
+                </h2>
+                <button className="bg-foreground text-background px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity">
+                  Become a model
+                </button>
+              </div>
+              <div className="flex-1 grid grid-cols-2 gap-3">
+                <img 
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" 
+                  alt="AI model example"
+                  className="rounded-2xl w-full aspect-square object-cover"
+                />
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" 
+                  alt="AI model example"
+                  className="rounded-2xl w-full aspect-square object-cover"
+                />
+                <img 
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop" 
+                  alt="AI model example"
+                  className="rounded-2xl w-full aspect-[4/5] object-cover"
+                />
+                <img 
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" 
+                  alt="AI model example"
+                  className="rounded-2xl w-full aspect-[4/5] object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
         
         <GenerationModal 
