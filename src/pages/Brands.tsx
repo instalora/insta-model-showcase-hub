@@ -126,6 +126,89 @@ const Brands = () => {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section className="py-16 px-6 md:px-10 bg-muted/30">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Choose the plan that fits your content needs. Scale up anytime.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Starter Plan */}
+            <div className="bg-background rounded-2xl p-8 shadow-md shadow-black/5 flex flex-col">
+              <h3 className="text-xl font-semibold mb-2">Starter</h3>
+              <p className="text-muted-foreground text-sm mb-6">Perfect for trying out AI content</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">$49</span>
+                <span className="text-muted-foreground">/month</span>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                {["50 image generations", "3 AI models access", "Standard resolution", "Email support", "Commercial license"].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button variant="outline" className="w-full">
+                Get Started
+              </Button>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="bg-background rounded-2xl p-8 shadow-md shadow-black/5 flex flex-col relative border-2 border-primary">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-gradient-to-r from-[#E456F4] to-[#A855F7] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  Most Popular
+                </span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Pro</h3>
+              <p className="text-muted-foreground text-sm mb-6">For growing brands and teams</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">$149</span>
+                <span className="text-muted-foreground">/month</span>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                {["200 image generations", "10 AI models access", "High resolution (4K)", "Priority support", "Commercial license", "Custom brand styles", "API access"].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button className="w-full bg-gradient-to-r from-[#E456F4] to-[#A855F7] hover:opacity-90 text-white">
+                Get Started
+              </Button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-background rounded-2xl p-8 shadow-md shadow-black/5 flex flex-col">
+              <h3 className="text-xl font-semibold mb-2">Enterprise</h3>
+              <p className="text-muted-foreground text-sm mb-6">For large teams with custom needs</p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">Custom</span>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                {["Unlimited generations", "All AI models access", "Ultra-high resolution", "Dedicated support", "Custom model training", "White-label options", "SLA guarantee", "Dedicated account manager"].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm">
+                    <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button variant="outline" className="w-full">
+                Contact Sales
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 px-6 md:px-10">
         <div className="max-w-[1200px] mx-auto">
