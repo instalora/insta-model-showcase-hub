@@ -27,7 +27,7 @@ const modelsData: Record<string, {
 }> = {
   'camila': {
     id: 'camila',
-    name: 'Camilla Gimenez',
+    name: 'Camilla',
     niche: 'AI & Tech Creator',
     bio: `Camilla is a content creator and digital marketing expert focused on AI and tech. She shares AI tools and hacks to make life easier and has been active on social media since around 2012, with notable presence on Instagram and Twitter. Previously based in Las Vegas as a social media marketing specialist, she now collaborates with brands to translate complex technology into relatable stories.`,
     heroImage: '/camila/2.jpg',
