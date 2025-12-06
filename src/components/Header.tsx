@@ -29,7 +29,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between">
         <a href="/" className="flex items-center">
           <span className="text-xl font-bold font-display bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Instalora
+            epicTwin
           </span>
         </a>
 
