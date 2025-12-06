@@ -10,6 +10,7 @@ import ModelProfile from "./pages/ModelProfile";
 import BecomeModel from "./pages/BecomeModel";
 import Brands from "./pages/Brands";
 import CaseStudies from "./pages/CaseStudies";
+import CaseStudyPromod from "./pages/CaseStudyPromod";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/become-model" element={<BecomeModel />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/case-study/promod" element={<CaseStudyPromod />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
