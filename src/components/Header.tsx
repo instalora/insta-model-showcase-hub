@@ -66,6 +66,16 @@ const Header: React.FC = () => {
             For Brands
           </NavLink>
           <NavLink
+            to="/case-studies"
+            className={({ isActive }) =>
+              `text-sm font-medium transition-colors ${
+                isActive ? "text-primary" : "hover:text-primary"
+              }`
+            }
+          >
+            Case Studies
+          </NavLink>
+          <NavLink
             to="/about"
             className={({ isActive }) =>
               `text-sm font-medium transition-colors ${
@@ -155,6 +165,17 @@ const Header: React.FC = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               For Brands
+            </NavLink>
+            <NavLink
+              to="/case-studies"
+              className={({ isActive }) =>
+                `text-lg font-medium transition-colors ${
+                  isActive ? "text-primary" : "hover:text-primary"
+                }`
+              }
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Case Studies
             </NavLink>
             <NavLink
               to="/about"
