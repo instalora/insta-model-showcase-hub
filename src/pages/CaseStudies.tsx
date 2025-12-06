@@ -14,11 +14,17 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
+    id: "promod",
+    title: "Promod: AI-Generated UGC for Winter Collection",
+    image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&h=600&fit=crop",
+    tags: ["Fashion", "E-commerce", "UGC Content"],
+    highlightTag: "Featured"
+  },
+  {
     id: "fashion-nova",
     title: "Fashion Nova: AI-powered campaign visuals",
     image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&h=600&fit=crop",
     tags: ["Fashion", "E-commerce", "Social Media"],
-    highlightTag: "Featured"
   },
   {
     id: "beauty-brand",
@@ -67,7 +73,7 @@ const caseStudies: CaseStudy[] = [
   {
     id: "sports-brand",
     title: "Athletic Pro: Sports gear marketing",
-    image: "https://images.unsplash.com/photo-1461896836934- voices.jpg?w=800&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1461896836934-ber28f2d1b8?w=800&h=600&fit=crop",
     tags: ["Sports", "E-commerce", "Lifestyle"]
   }
 ];
