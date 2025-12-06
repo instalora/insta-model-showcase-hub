@@ -10,7 +10,7 @@ interface ModelInfoProps {
 
 const ModelInfo: React.FC<ModelInfoProps> = ({ name, niche, bio, avatarSrc }) => {
   return (
-    <div className="bg-white dark:bg-instalora-900 p-6 rounded-xl shadow-sm">
+    <div className="bg-white dark:bg-instalora-900 p-6 rounded-xl shadow-md">
       <div className="flex items-center mb-4">
         {avatarSrc && (
           <div className="mr-4">
