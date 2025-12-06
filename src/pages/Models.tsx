@@ -17,6 +17,17 @@ interface Model {
 
 const initialModels: Model[] = [
   {
+    id: 'camila',
+    name: 'Camilla Gimenez',
+    niche: 'AI & Tech',
+    subtitle:
+      'Content creator and digital marketing expert sharing AI tools and hacks.',
+    image: '/camila/1.jpg',
+    likes: 1700000,
+    brandUses: 125,
+    comments: 18400,
+  },
+  {
     id: '1',
     name: 'Sophia Chen',
     niche: 'Fashion',
