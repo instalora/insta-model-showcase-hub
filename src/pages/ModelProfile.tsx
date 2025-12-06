@@ -25,7 +25,7 @@ const modelsData: Record<string, {
   stats: { generatedImages: number; brandCollaborations: number; uniqueStyles: number; creativePrompts: number };
   social: { likes: number; shares: number; comments: number };
 }> = {
-  camila: {
+  'camila': {
     id: 'camila',
     name: 'Camilla Gimenez',
     niche: 'AI & Tech Creator',
