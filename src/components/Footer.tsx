@@ -7,8 +7,8 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-instalora-50 dark:bg-instalora-900 py-16 px-4 md:px-8">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="col-span-2 md:col-span-1">
             <a href="/" className="flex items-center">
               <span className="text-xl font-bold font-display bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Instalora
@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
               <li><a href="/partners" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Partners</a></li>
             </ul>
           </div>
-          
-          <div className="md:col-span-1">
+
+          <div className="md:col-span-1 md:text-left text-right">
             <h3 className="font-display font-semibold mb-4 text-sm">Resources</h3>
             <ul className="space-y-3">
               <li><a href="/blog" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Blog</a></li>
@@ -38,13 +38,13 @@ const Footer: React.FC = () => {
               <li><a href="/community" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Community</a></li>
             </ul>
           </div>
-          
-          <div className="md:col-span-1">
+
+          <div className="col-span-2 md:col-span-1">
             <h3 className="font-display font-semibold mb-4 text-sm">Stay updated</h3>
             <p className="text-instalora-600 text-sm mb-4 dark:text-instalora-300">Subscribe to our newsletter</p>
             <form className="flex gap-2">
-              <Input 
-                type="email" 
+              <Input
+                type="email"
                 placeholder="Enter your email" 
                 className="flex-1"
               />
