@@ -111,7 +111,7 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-white dark:bg-instalora-950">
+        <div className="md:hidden fixed inset-0 z-50 bg-background" style={{ top: 0 }}>
           <div className="flex justify-end p-4">
             <button 
               onClick={() => setIsMobileMenuOpen(false)} 
