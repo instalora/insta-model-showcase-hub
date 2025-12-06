@@ -23,7 +23,9 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className={`${isScrolled ? 'sticky-header' : 'py-6'} w-full py-4 px-4 md:px-8 transition-all duration-300`}>
+    <header
+      className={`${isScrolled ? 'sticky-header' : 'py-6'} w-full py-4 px-4 md:px-8 transition-all duration-300 ${isMobileMenuOpen ? 'bg-white dark:bg-instalora-950 !bg-opacity-100' : ''}`}
+    >
       <div className="container mx-auto flex items-center justify-between">
         <a href="/" className="flex items-center">
           <span className="text-xl font-bold font-display bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
