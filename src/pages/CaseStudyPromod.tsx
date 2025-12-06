@@ -8,7 +8,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 const CaseStudyPromod: React.FC = () => {
   const metrics = [
     { label: "Content Cost Reduction", value: "73%", icon: TrendingUp },
-    { label: "Time to Market", value: "5 days", icon: Clock },
+    { label: "Time to Market", value: "5 hours", icon: Clock },
     { label: "UGC Assets Generated", value: "150+", icon: Sparkles },
     { label: "Campaign Reach", value: "2.4M", icon: Users },
   ];
@@ -19,12 +19,12 @@ const CaseStudyPromod: React.FC = () => {
     "Need for authentic UGC-style content that resonates with younger audiences",
     "Maintaining consistent brand aesthetics across all generated content"
   ];
-
+  
   const solutions = [
-    "Matched Promod with AI models that perfectly fit their brand aesthetic and collection style",
-    "Generated over 150 high-quality UGC-style images featuring the new winter collection",
-    "Created authentic lifestyle content showcasing products in real-world settings",
-    "Delivered campaign-ready assets in just 5 days instead of traditional 6-week timeline"
+    "Matched Promod with digital twin models that perfectly aligned with their brand aesthetic and collection style",
+    "Generated 150+ high-quality UGC-style images featuring the new winter collection",
+    "Produced authentic lifestyle scenes showcasing products in realistic, on-brand environments",
+    "Delivered campaign-ready assets in just 5 hours, compared to the traditional 6-week production cycle"
   ];
 
   const galleryImages = [
@@ -239,10 +239,10 @@ const CaseStudyPromod: React.FC = () => {
                 The Solution
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-                AI-Powered Model Discovery & UGC Generation
+                AI-Powered Twin Model Discovery & UGC Generation
               </h2>
               <p className="text-muted-foreground mb-8">
-                Instalora provided Promod with an end-to-end solution that transformed their content creation workflow.
+                EpicTwin provided Promod with an end-to-end solution that transformed their content creation workflow.
               </p>
               <ul className="space-y-4">
                 {solutions.map((solution, index) => (
@@ -265,7 +265,7 @@ const CaseStudyPromod: React.FC = () => {
               The Process
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              From Brief to Campaign in 5 Days
+              From Brief to Campaign in 5 Hours
             </h2>
           </div>
           
