@@ -25,6 +25,25 @@ const modelsData: Record<string, {
   stats: { generatedImages: number; brandCollaborations: number; uniqueStyles: number; creativePrompts: number };
   social: { likes: number; shares: number; comments: number };
 }> = {
+  camila: {
+    id: 'camila',
+    name: 'Camilla Gimenez',
+    niche: 'AI & Tech Creator',
+    bio: `Camilla is a content creator and digital marketing expert focused on AI and tech. She shares AI tools and hacks to make life easier and has been active on social media since around 2012, with notable presence on Instagram and Twitter. Previously based in Las Vegas as a social media marketing specialist, she now collaborates with brands to translate complex technology into relatable stories.`,
+    heroImage: '/camila/2.jpg',
+    avatar: '/camila/1.jpg',
+    images: [
+      { id: '1', src: '/camila/3.jpg', alt: 'Camilla sharing AI insights', type: 'image' },
+      { id: '2', src: '/camila/4.jpg', alt: 'Camilla with tech-focused aesthetic', type: 'image' },
+      { id: '3', src: '/camila/5.jpg', alt: 'Camilla lifestyle portrait', type: 'image' },
+      { id: '4', src: '/camila/6.jpg', alt: 'Camilla presenting digital marketing tips', type: 'image' },
+      { id: '5', src: '/camila/7.jpg', alt: 'Camilla behind-the-scenes content', type: 'image' },
+      { id: '6', src: '/camila/8.jpg', alt: 'Camilla casual outdoor look', type: 'image' },
+      { id: '7', src: '/camila/9.jpg', alt: 'Camilla highlighting AI-driven workflows', type: 'image' },
+    ],
+    stats: { generatedImages: 1850, brandCollaborations: 95, uniqueStyles: 34, creativePrompts: 720 },
+    social: { likes: 1700000, shares: 240000, comments: 18400 }
+  },
   '1': {
     id: '1',
     name: 'Sophia',
