@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
@@ -27,17 +27,39 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) 
     setSelectedImageIndex(null);
   };
 
-  const goToNextImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % images.length);
-    }
-  };
+  const goToNextImage = useCallback(() => {
+    setSelectedImageIndex((currentIndex) => {
+      if (currentIndex === null) return currentIndex;
+      return (currentIndex + 1) % images.length;
+    });
+  }, [images.length]);
 
-  const goToPreviousImage = () => {
-    if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex - 1 + images.length) % images.length);
-    }
-  };
+  const goToPreviousImage = useCallback(() => {
+    setSelectedImageIndex((currentIndex) => {
+      if (currentIndex === null) return currentIndex;
+      return (currentIndex - 1 + images.length) % images.length;
+    });
+  }, [images.length]);
+
+  useEffect(() => {
+    if (selectedImageIndex === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goToPreviousImage();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goToNextImage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [goToNextImage, goToPreviousImage, selectedImageIndex]);
 
   return (
     <>
