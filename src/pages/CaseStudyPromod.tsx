@@ -37,6 +37,7 @@ const CaseStudyPromod: React.FC = () => {
   ];
 
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [imageOrientation, setImageOrientation] = useState<Record<number, "portrait" | "landscape">>({});
 
   const openLightbox = (index: number) => {
     setSelectedImageIndex(index);
@@ -45,6 +46,14 @@ const CaseStudyPromod: React.FC = () => {
   const closeLightbox = () => {
     setSelectedImageIndex(null);
   };
+
+  const handleImageLoad = useCallback((event: React.SyntheticEvent<HTMLImageElement>, index: number) => {
+    const { naturalWidth, naturalHeight } = event.currentTarget;
+    setImageOrientation((prev) => ({
+      ...prev,
+      [index]: naturalHeight > naturalWidth ? "portrait" : "landscape",
+    }));
+  }, []);
 
   const goToNextImage = useCallback(() => {
     setSelectedImageIndex((currentIndex) => {
@@ -324,11 +333,12 @@ const CaseStudyPromod: React.FC = () => {
           <Dialog open={selectedImageIndex !== null} onOpenChange={closeLightbox}>
             <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
               {selectedImageIndex !== null && (
-                <div className="relative">
+                <div className="relative flex items-center justify-center max-h-[80vh]">
                   <img
                     src={galleryImages[selectedImageIndex]}
                     alt={`Promod campaign image ${selectedImageIndex + 1}`}
-                    className="w-full h-auto rounded-lg"
+                    className={`rounded-lg max-h-[80vh] ${imageOrientation[selectedImageIndex] === "portrait" ? "h-full w-auto mx-auto" : "w-full h-auto"}`}
+                    onLoad={(event) => handleImageLoad(event, selectedImageIndex)}
                   />
 
                   <button
