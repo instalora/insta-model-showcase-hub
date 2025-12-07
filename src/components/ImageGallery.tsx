@@ -18,7 +18,6 @@ interface ImageGalleryProps {
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [imageOrientation, setImageOrientation] = useState<Record<number, "portrait" | "landscape">>({});
 
   const openLightbox = (index: number) => {
     setSelectedImageIndex(index);
@@ -27,14 +26,6 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) 
   const closeLightbox = () => {
     setSelectedImageIndex(null);
   };
-
-  const handleImageLoad = useCallback((event: React.SyntheticEvent<HTMLImageElement>, index: number) => {
-    const { naturalWidth, naturalHeight } = event.currentTarget;
-    setImageOrientation((prev) => ({
-      ...prev,
-      [index]: naturalHeight > naturalWidth ? "portrait" : "landscape",
-    }));
-  }, []);
 
   const goToNextImage = useCallback(() => {
     setSelectedImageIndex((currentIndex) => {
@@ -110,24 +101,23 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) 
       <Dialog open={selectedImageIndex !== null} onOpenChange={closeLightbox}>
         <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
           {selectedImageIndex !== null && (
-            <div className="relative flex items-center justify-center max-h-[80vh]">
+            <div className="relative">
               {images[selectedImageIndex].type === 'image' ? (
-                <img
-                  src={images[selectedImageIndex].src}
-                  alt={images[selectedImageIndex].alt}
-                  className={`rounded-lg max-h-[80vh] ${imageOrientation[selectedImageIndex] === "portrait" ? "h-full w-auto mx-auto" : "w-full h-auto"}`}
-                  onLoad={(event) => handleImageLoad(event, selectedImageIndex)}
+                <img 
+                  src={images[selectedImageIndex].src} 
+                  alt={images[selectedImageIndex].alt} 
+                  className="w-full h-auto rounded-lg"
                 />
               ) : (
-                <video
-                  src={images[selectedImageIndex].src}
+                <video 
+                  src={images[selectedImageIndex].src} 
                   controls
                   autoPlay
                   className="w-full h-auto rounded-lg"
                 />
               )}
-
-              <button
+              
+              <button 
                 onClick={(e) => {
                   e.stopPropagation();
                   goToPreviousImage();
@@ -139,8 +129,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) 
                   <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-
-              <button
+              
+              <button 
                 onClick={(e) => {
                   e.stopPropagation();
                   goToNextImage();
