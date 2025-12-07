@@ -271,11 +271,11 @@ const CaseStudyPromod: React.FC = () => {
           </div>
           
           <div className="space-y-8">
-            {[
-              { day: "Day 1", title: "Model Discovery & Selection", description: "Promod browsed our AI model catalog and selected 3 models that perfectly matched their brand's aesthetic — diverse, approachable, and fashion-forward." },
-              { day: "Day 2", title: "Collection Upload & Brief", description: "The team uploaded their winter collection pieces and provided style direction, mood boards, and specific shot requirements." },
-              { day: "Day 3-4", title: "AI Content Generation", description: "Instalora generated 150+ unique images featuring the selected AI models wearing the new collection in various lifestyle settings." },
-              { day: "Day 5", title: "Review & Delivery", description: "Promod reviewed the generated content, requested minor adjustments, and received final campaign-ready assets." },
+            {[ 
+              { day: "Hour 1", title: "Model Discovery & Selection", description: "Promod browsed our AI model catalog and selected 3 models that perfectly matched their brand's aesthetic — diverse, approachable, and fashion-forward." },
+              { day: "Hour 2", title: "Collection Upload & Brief", description: "The team uploaded their winter collection pieces and provided style direction, mood boards, and specific shot requirements." },
+              { day: "Hour 3-4", title: "AI Content Generation", description: "Instalora generated 150+ unique images featuring the selected AI models wearing the new collection in various lifestyle settings." },
+              { day: "Hour 5", title: "Review & Delivery", description: "Promod reviewed the generated content, requested minor adjustments, and received final campaign-ready assets." },
             ].map((step, index) => (
               <div key={index} className="flex gap-6 items-start">
                 <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center">
