@@ -56,6 +56,7 @@ const ModelInfo: React.FC<ModelInfoProps> = ({ name, niche, bio, avatarSrc, soci
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    title={`Open ${social.platform} profile in a new tab`}
                     className="text-muted-foreground hover:text-primary transition-colors"
                     aria-label={`${name}'s ${social.platform}`}
                   >
