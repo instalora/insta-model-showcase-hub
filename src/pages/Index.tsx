@@ -98,6 +98,7 @@ const Index = () => {
               <div className="sticky top-24">
                 <ModelInfo 
                   name={modelData.name}
+                  modelId={modelData.id}
                   niche={modelData.niche}
                   bio={modelData.bio}
                   avatarSrc={modelData.avatar}
