@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import AspectAwareImage from "@/components/AspectAwareImage";
 
 interface Image {
   id: string;
@@ -103,10 +104,10 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) 
           {selectedImageIndex !== null && (
             <div className="relative">
               {images[selectedImageIndex].type === 'image' ? (
-                <img 
+                <AspectAwareImage
                   src={images[selectedImageIndex].src} 
                   alt={images[selectedImageIndex].alt} 
-                  className="w-full h-auto rounded-lg"
+                  className="rounded-lg max-h-[85vh]"
                 />
               ) : (
                 <video 

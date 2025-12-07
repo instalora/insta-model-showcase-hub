@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { ArrowLeft, CheckCircle, TrendingUp, Clock, Users, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import AspectAwareImage from "@/components/AspectAwareImage";
 
 const CaseStudyPromod: React.FC = () => {
   const metrics = [
@@ -324,11 +325,11 @@ const CaseStudyPromod: React.FC = () => {
           <Dialog open={selectedImageIndex !== null} onOpenChange={closeLightbox}>
             <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
               {selectedImageIndex !== null && (
-                <div className="relative">
-                  <img
+                <div className="relative flex items-center justify-center min-h-[50vh]">
+                  <AspectAwareImage
                     src={galleryImages[selectedImageIndex]}
                     alt={`Promod campaign image ${selectedImageIndex + 1}`}
-                    className="w-full h-auto rounded-lg"
+                    className="rounded-lg max-h-[85vh]"
                   />
 
                   <button
