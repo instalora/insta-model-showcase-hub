@@ -62,9 +62,9 @@ const About = () => {
             <div className="relative">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=700&fit=crop" 
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=900&fit=crop" 
                   alt="Fashion model in urban setting"
-                  className="w-full max-w-md ml-auto rounded-2xl shadow-2xl"
+                  className="w-full max-w-md ml-auto rounded-2xl shadow-2xl object-contain"
                 />
                 <img 
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" 
