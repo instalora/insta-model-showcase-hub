@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
 import AspectAwareImage from "@/components/AspectAwareImage";
 
 interface Image {
@@ -100,9 +101,18 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) 
       </div>
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={closeLightbox}>
-        <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
+        <DialogContent className="max-w-5xl p-0 bg-transparent border-none [&>button]:hidden">
           {selectedImageIndex !== null && (
             <div className="relative">
+              {/* Close button in top right corner */}
+              <button 
+                onClick={closeLightbox}
+                className="absolute -top-12 right-0 bg-white/80 dark:bg-black/50 p-2 rounded-full z-10 hover:bg-white dark:hover:bg-black/70 transition-colors"
+                aria-label="Close lightbox"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
               {images[selectedImageIndex].type === 'image' ? (
                 <AspectAwareImage
                   src={images[selectedImageIndex].src} 
