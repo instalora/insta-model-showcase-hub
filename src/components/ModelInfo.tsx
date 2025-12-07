@@ -1,5 +1,7 @@
-import React from 'react';
-import { Instagram } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Instagram, Heart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { toast } from '@/components/ui/use-toast';
 
 // TikTok icon component (not available in lucide-react)
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -15,13 +17,42 @@ interface Social {
 
 interface ModelInfoProps {
   name: string;
+  modelId: string;
   niche: string;
   bio: string;
   avatarSrc?: string;
   socials?: Social[];
 }
 
-const ModelInfo: React.FC<ModelInfoProps> = ({ name, niche, bio, avatarSrc, socials }) => {
+const ModelInfo: React.FC<ModelInfoProps> = ({ name, modelId, niche, bio, avatarSrc, socials }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favoriteModels') || '[]');
+    setIsFavorite(favorites.includes(modelId));
+  }, [modelId]);
+
+  const toggleFavorite = () => {
+    const favorites = JSON.parse(localStorage.getItem('favoriteModels') || '[]');
+    let newFavorites;
+    
+    if (isFavorite) {
+      newFavorites = favorites.filter((id: string) => id !== modelId);
+      toast({
+        title: "Removed from favorites",
+        description: `${name} has been removed from your favorites.`,
+      });
+    } else {
+      newFavorites = [...favorites, modelId];
+      toast({
+        title: "Added to favorites",
+        description: `${name} has been saved to your favorites.`,
+      });
+    }
+    
+    localStorage.setItem('favoriteModels', JSON.stringify(newFavorites));
+    setIsFavorite(!isFavorite);
+  };
   const getSocialIcon = (platform: Social['platform']) => {
     switch (platform) {
       case 'instagram':
@@ -46,24 +77,37 @@ const ModelInfo: React.FC<ModelInfoProps> = ({ name, niche, bio, avatarSrc, soci
           </div>
         )}
         <div className="flex-1">
-          <div className="flex items-center gap-3">
-            <h2 className="text-2xl font-bold font-display">{name}</h2>
-            {socials && socials.length > 0 && (
-              <div className="flex items-center gap-2">
-                {socials.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label={`${name}'s ${social.platform}`}
-                  >
-                    {getSocialIcon(social.platform)}
-                  </a>
-                ))}
-              </div>
-            )}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <h2 className="text-2xl font-bold font-display">{name}</h2>
+              {socials && socials.length > 0 && (
+                <div className="flex items-center gap-2">
+                  {socials.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={`${name}'s ${social.platform}`}
+                    >
+                      {getSocialIcon(social.platform)}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleFavorite}
+              className="shrink-0"
+              aria-label={isFavorite ? "Remove from favorites" : "Save to favorites"}
+            >
+              <Heart 
+                className={`w-5 h-5 transition-colors ${isFavorite ? 'fill-primary text-primary' : 'text-muted-foreground hover:text-primary'}`} 
+              />
+            </Button>
           </div>
           <p className="text-instalora-500 dark:text-instalora-400">{niche}</p>
         </div>
