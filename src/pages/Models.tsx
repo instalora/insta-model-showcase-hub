@@ -21,7 +21,7 @@ const initialModels: Model[] = [
     name: 'Camilla Gimenez',
     niche: 'AI & Tech',
     subtitle:
-      'Content creator and digital marketing expert sharing AI tools and hacks.',
+      'Content creator and digital marketing expert',
     image: '/camila/1.jpg',
     likes: 1700000,
     brandUses: 125,
