@@ -24,6 +24,7 @@ const modelsData: Record<string, {
   images: { id: string; src: string; alt: string; type: 'image' | 'video' }[];
   stats: { generatedImages: number; brandCollaborations: number; uniqueStyles: number; creativePrompts: number };
   social: { likes: number; shares: number; comments: number };
+  socials?: { platform: 'instagram' | 'tiktok' | 'twitter' | 'youtube'; url: string }[];
 }> = {
   'camila': {
     id: 'camila',
@@ -44,7 +45,8 @@ const modelsData: Record<string, {
       { id: '9', src: '/camila/9.jpg', alt: 'Camilla highlighting AI-driven workflows', type: 'image' },
     ],
     stats: { generatedImages: 1850, brandCollaborations: 95, uniqueStyles: 34, creativePrompts: 720 },
-    social: { likes: 1700000, shares: 240000, comments: 18400 }
+    social: { likes: 1700000, shares: 240000, comments: 18400 },
+    socials: [{ platform: 'instagram', url: 'https://www.instagram.com/camillagimenez/' }]
   },
   '1': {
     id: '1',
@@ -62,7 +64,8 @@ const modelsData: Record<string, {
       { id: '6', src: 'https://images.unsplash.com/photo-1524041255072-7da0525d6b34?q=80&w=1780&auto=format&fit=crop', alt: 'Sophia outdoor photoshoot', type: 'image' },
     ],
     stats: { generatedImages: 1200, brandCollaborations: 50, uniqueStyles: 25, creativePrompts: 500 },
-    social: { likes: 5200, shares: 1100, comments: 760 }
+    social: { likes: 5200, shares: 1100, comments: 760 },
+    socials: [{ platform: 'tiktok', url: 'https://www.tiktok.com/@sophia' }]
   },
   '2': {
     id: '2',
@@ -159,6 +162,7 @@ const ModelProfile = () => {
                   niche={modelData.niche}
                   bio={modelData.bio}
                   avatarSrc={modelData.avatar}
+                  socials={modelData.socials}
                 />
                 
                 <div className="mt-6">
