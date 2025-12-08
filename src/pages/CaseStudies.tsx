@@ -109,14 +109,14 @@ const CaseStudies: React.FC = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="bg-gradient-to-r from-[#E456F4] to-[#A855F7] rounded-3xl p-8 md:p-12 text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Transform Your Content?
+              Ready to create your success story?
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8">
-              Join hundreds of brands already creating stunning visuals with Instalora AI models.
+              Join hundreds of brands already using Instalora to revolutionize their content creation.
             </p>
             <Link to="/brands">
               <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-                Start Free Trial
+                Get Started
               </Button>
             </Link>
           </div>
