@@ -31,7 +31,7 @@ const initialModels: Model[] = [
     name: 'Amara',
     niche: 'Fitness',
     subtitle: 'Athletic elegance meets lifestyle storytelling',
-    image: '/amara/2.jpg',
+    image: '/amara/11.jpg',
     likes: 98500,
     brandUses: 68,
     comments: 1300,
