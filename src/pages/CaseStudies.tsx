@@ -16,66 +16,17 @@ const caseStudies: CaseStudy[] = [
   {
     id: "promod",
     title: "Promod: AI-Generated UGC for Winter Collection",
-    image: "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&h=600&fit=crop",
-    tags: ["Fashion", "E-commerce", "UGC Content"],
+    image: "/camila/1.jpg",
+    tags: ["Fashion", "E-commerce"],
     highlightTag: "Featured"
   },
   {
-    id: "fashion-nova",
-    title: "Fashion Nova: AI-powered campaign visuals",
-    image: "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&h=600&fit=crop",
-    tags: ["Fashion", "E-commerce", "Social Media"],
-  },
-  {
-    id: "beauty-brand",
-    title: "GlowUp Beauty: Product launch imagery",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&h=600&fit=crop",
-    tags: ["Beauty", "Product Photography"],
+    id: "iman-cosmetics",
+    title: "IMAN Cosmetics: Finding the Perfect Model for Authentic Beauty Content",
+    image: "/amara/1.jpg",
+    tags: ["Beauty", "Cosmetics", "UGC"],
     highlightTag: "New"
   },
-  {
-    id: "fitness-app",
-    title: "FitLife: Fitness influencer campaigns",
-    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop",
-    tags: ["Fitness", "Lifestyle", "App Marketing"]
-  },
-  {
-    id: "luxury-watches",
-    title: "Chronos Watches: Luxury brand content",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&h=600&fit=crop",
-    tags: ["Luxury", "Product", "Branding"]
-  },
-  {
-    id: "travel-agency",
-    title: "Wanderlust Travel: Destination marketing",
-    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
-    tags: ["Travel", "Lifestyle", "Social Media"]
-  },
-  {
-    id: "food-delivery",
-    title: "TastyBites: Food delivery app visuals",
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop",
-    tags: ["Food", "App", "Marketing"],
-    highlightTag: "Popular"
-  },
-  {
-    id: "tech-startup",
-    title: "NexTech: Tech startup branding",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop",
-    tags: ["Tech", "Startup", "Branding"]
-  },
-  {
-    id: "wellness-brand",
-    title: "ZenMind: Wellness app campaign",
-    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&h=600&fit=crop",
-    tags: ["Wellness", "Health", "Lifestyle"]
-  },
-  {
-    id: "sports-brand",
-    title: "Athletic Pro: Sports gear marketing",
-    image: "https://images.unsplash.com/photo-1461896836934-ber28f2d1b8?w=800&h=600&fit=crop",
-    tags: ["Sports", "E-commerce", "Lifestyle"]
-  }
 ];
 
 const CaseStudyCard: React.FC<{ study: CaseStudy }> = ({ study }) => {
