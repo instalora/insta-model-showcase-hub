@@ -48,6 +48,29 @@ const modelsData: Record<string, {
     social: { likes: 1700000, shares: 240000, comments: 18400 },
     socials: [{ platform: 'instagram', url: 'https://www.instagram.com/camillagimenez/' }]
   },
+  'stasy': {
+    id: 'stasy',
+    name: 'Stasy',
+    niche: 'Fashion & Lifestyle Muse',
+    bio: `Stasy blends contemporary fashion with relaxed resort vibes, creating versatile visuals for luxury travel, beauty, and lifestyle campaigns. Her warm palette and confident poses fit lookbooks, social launches, and editorial storytelling.`,
+    heroImage: '/wairk1/8.jpg',
+    avatar: '/wairk1/6.jpg',
+    images: [
+      { id: '1', src: '/wairk1/1.jpg', alt: 'Stasy sunlit portrait', type: 'image' },
+      { id: '2', src: '/wairk1/2.jpg', alt: 'Stasy in resort wear', type: 'image' },
+      { id: '3', src: '/wairk1/3.jpg', alt: 'Stasy with warm-toned backdrop', type: 'image' },
+      { id: '4', src: '/wairk1/4.jpg', alt: 'Stasy casual lifestyle pose', type: 'image' },
+      { id: '5', src: '/wairk1/5.jpg', alt: 'Stasy sitting outdoor lounge', type: 'image' },
+      { id: '6', src: '/wairk1/6.jpg', alt: 'Stasy close-up portrait', type: 'image' },
+      { id: '7', src: '/wairk1/7.jpg', alt: 'Stasy in neutral ensemble', type: 'image' },
+      { id: '8', src: '/wairk1/8.jpg', alt: 'Stasy evening outfit', type: 'image' },
+      { id: '9', src: '/wairk1/9.jpg', alt: 'Stasy relaxed pose by window', type: 'image' },
+      { id: '10', src: '/wairk1/10.jpg', alt: 'Stasy fashionable street style', type: 'image' },
+    ],
+    stats: { generatedImages: 1320, brandCollaborations: 84, uniqueStyles: 22, creativePrompts: 540 },
+    social: { likes: 9400, shares: 2300, comments: 610 },
+    socials: [{ platform: 'instagram', url: 'https://www.instagram.com' }]
+  },
   '1': {
     id: '1',
     name: 'Sophia',
