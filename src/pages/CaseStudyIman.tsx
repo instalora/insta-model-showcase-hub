@@ -330,7 +330,7 @@ const CaseStudyIman = () => {
         <div className="max-w-3xl mx-auto text-center">
           <Quote className="w-12 h-12 text-primary/30 mx-auto mb-6" />
           <blockquote className="text-xl md:text-2xl text-foreground italic mb-6 leading-relaxed">
-            "epicTwin transformed our content creation process. Finding Amara was a game-changer—she embodies everything IMAN Cosmetics stands for. The AI-generated content was indistinguishable from traditional photoshoots, and we did it in a fraction of the time."
+            "epicTwin revolutionized how we create content. Discovering Amara was transformative: she perfectly represents everything IMAN Cosmetics stands for. The AI-generated visuals matched the quality of traditional photoshoots, but we completed everything in a fraction of the time."
           </blockquote>
           <div>
             <p className="font-bold text-foreground">Sarah Mitchell</p>
