@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Heart, Lock, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'react-router-dom';
 
@@ -69,73 +68,68 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
   return (
     <div
       ref={cardRef}
-      className={`group transition-all duration-300 ${
+      className={`transition-all duration-300 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <div className="relative overflow-hidden rounded-xl bg-card shadow-md shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:-translate-y-1 transition-all duration-300">
-        {/* Image Container */}
-        <div className="relative aspect-[3/4] overflow-hidden">
-          {!imageLoaded && (
-            <Skeleton className="absolute inset-0 rounded-none" />
-          )}
-          <img
-            src={model.image}
-            alt={model.name}
-            className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={() => setImageLoaded(true)}
-          />
-          
-          {/* Niche Tag */}
-          <div className="absolute top-4 left-4">
-            <span className={`px-3 py-1.5 text-xs font-semibold text-white rounded-full bg-gradient-to-r ${gradientClass}`}>
-              {model.niche}
-            </span>
+      <Link
+        to={`/model/${model.id}`}
+        className="group block h-full"
+      >
+        <div className="relative overflow-hidden rounded-xl bg-card shadow-md shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+          {/* Image Container */}
+          <div className="relative aspect-[3/4] overflow-hidden">
+            {!imageLoaded && (
+              <Skeleton className="absolute inset-0 rounded-none" />
+            )}
+            <img
+              src={model.image}
+              alt={model.name}
+              className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onLoad={() => setImageLoaded(true)}
+            />
+
+            {/* Niche Tag */}
+            <div className="absolute top-4 left-4">
+              <span className={`px-3 py-1.5 text-xs font-semibold text-white rounded-full bg-gradient-to-r ${gradientClass}`}>
+                {model.niche}
+              </span>
+            </div>
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        </div>
+          {/* Content */}
+          <div className="p-5">
+            <h3 className="text-xl font-bold font-display text-foreground mb-1">
+              {model.name}
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              {model.subtitle}
+            </p>
 
-        {/* Content */}
-        <div className="p-5">
-          <h3 className="text-xl font-bold font-display text-foreground mb-1">
-            {model.name}
-          </h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            {model.subtitle}
-          </p>
-
-          {/* Stats */}
-          <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <Heart className="w-4 h-4 text-brand-pink" />
-              <span>{formatNumber(model.likes)}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Lock className="w-4 h-4 text-brand-purple" />
-              <span>{model.brandUses}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <MessageCircle className="w-4 h-4 text-muted-foreground" />
-              <span>{formatNumber(model.comments)}</span>
+            {/* Stats */}
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1.5">
+                <Heart className="w-4 h-4 text-brand-pink" />
+                <span>{formatNumber(model.likes)}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Lock className="w-4 h-4 text-brand-purple" />
+                <span>{model.brandUses}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <MessageCircle className="w-4 h-4 text-muted-foreground" />
+                <span>{formatNumber(model.comments)}</span>
+              </div>
             </div>
           </div>
-
-          {/* CTA */}
-          <Link to={`/model/${model.id}`}>
-            <Button 
-              variant="default" 
-              className="w-full bg-gradient-to-r from-brand-pink to-brand-purple hover:opacity-90 transition-opacity"
-            >
-              View Profile
-            </Button>
-          </Link>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
