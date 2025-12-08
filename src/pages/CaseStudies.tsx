@@ -25,6 +25,12 @@ const caseStudies: CaseStudy[] = [
     title: "IMAN Cosmetics: Finding the Perfect Model for Authentic Beauty Content",
     image: "/amara/11.jpg",
     tags: ["Beauty", "Cosmetics", "UGC"],
+  },
+  {
+    id: "pirelli",
+    title: "Pirelli: Premium Campaign Content with AI-Powered Model Discovery",
+    image: "/wairk1/1.jpg",
+    tags: ["Automotive", "Lifestyle", "Premium"],
     highlightTag: "New"
   },
 ];
