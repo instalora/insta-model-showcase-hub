@@ -174,7 +174,7 @@ const CaseStudyPirelli = () => {
             Through epicTwin's model discovery platform, Pirelli found Stasy, a model whose sophisticated presence, natural elegance, and versatile style perfectly aligned with the brand's premium positioning and heritage of excellence.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Using epicTwin's AI-powered content generation tools, the brand created over 120 unique pieces of campaign content featuring Stasy, all within just 5 days—a fraction of traditional production timelines.
+            Using epicTwin's AI-powered content generation tools, the brand created over 120 unique pieces of campaign content featuring Stasy, all within just 5 days, a fraction of traditional production timelines.
           </p>
         </div>
       </section>
@@ -258,7 +258,7 @@ const CaseStudyPirelli = () => {
         <div className="max-w-3xl mx-auto text-center">
           <Quote className="w-12 h-12 text-primary/30 mx-auto mb-6" />
           <blockquote className="text-xl md:text-2xl text-foreground italic mb-6 leading-relaxed">
-            "epicTwin transformed our approach to campaign content. Discovering Stasy was a game-changer—she embodies the sophistication and elegance that defines Pirelli. The AI-generated content matched our exacting standards while dramatically accelerating our production timeline."
+            "epicTwin transformed our approach to campaign content. Discovering Stasy was a game-changer. She embodies the sophistication and elegance that defines Pirelli. The AI-generated content matched our exacting standards while dramatically accelerating our production timeline."
           </blockquote>
           <div>
             <p className="font-bold text-foreground">Marco Bernardi</p>
