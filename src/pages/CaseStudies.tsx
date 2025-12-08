@@ -23,7 +23,7 @@ const caseStudies: CaseStudy[] = [
   {
     id: "iman-cosmetics",
     title: "IMAN Cosmetics: Finding the Perfect Model for Authentic Beauty Content",
-    image: "/amara/1.jpg",
+    image: "/amara/11.jpg",
     tags: ["Beauty", "Cosmetics", "UGC"],
     highlightTag: "New"
   },
