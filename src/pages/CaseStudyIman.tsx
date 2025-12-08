@@ -10,12 +10,17 @@ const CaseStudyIman = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const galleryImages = [
-    { src: "/amara/1.jpg", alt: "Amara for IMAN Cosmetics campaign" },
-    { src: "/amara/2.jpg", alt: "Amara beauty portrait" },
-    { src: "/amara/6.jpg", alt: "Amara makeup showcase" },
-    { src: "/amara/7.jpg", alt: "Amara product styling" },
-    { src: "/amara/8.jpg", alt: "Amara brand content" },
-    { src: "/amara/9.jpg", alt: "Amara UGC content" },
+    { src: "/cs3/1.jpg", alt: "Amara for IMAN Cosmetics campaign" },
+    { src: "/cs3/2.jpg", alt: "Amara beauty portrait" },
+    { src: "/cs3/3.jpg", alt: "Amara makeup showcase" },
+    { src: "/cs3/4.jpg", alt: "Amara product styling" },
+    { src: "/cs3/5.jpg", alt: "Amara brand content" },
+    { src: "/cs3/6.jpg", alt: "Amara UGC content" },
+    { src: "/cs3/7.jpg", alt: "Amara UGC content" },
+    { src: "/cs3/8.jpg", alt: "Amara UGC content" },
+    { src: "/cs3/9.jpg", alt: "Amara UGC content" },
+    { src: "/cs3/10.jpg", alt: "Amara UGC content" },
+    { src: "/cs3/11.jpg", alt: "Amara UGC content" },
   ];
 
   const metrics = [
@@ -91,7 +96,7 @@ const CaseStudyIman = () => {
           <div className="relative">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
               <img
-                src="/amara/3.jpg"
+                src="/amara/2.jpg"
                 alt="IMAN Cosmetics x Amara Campaign"
                 className="w-full h-full object-cover"
               />
