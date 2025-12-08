@@ -17,6 +17,16 @@ interface Model {
 
 const initialModels: Model[] = [
   {
+    id: 'stasy',
+    name: 'Stasy',
+    niche: 'Fashion',
+    subtitle: 'Modern resort-inspired lifestyle content',
+    image: '/wairk1/1.jpg',
+    likes: 9400,
+    brandUses: 84,
+    comments: 610,
+  },
+  {
     id: 'camila',
     name: 'Camilla Gimenez',
     niche: 'AI & Tech',
@@ -26,16 +36,6 @@ const initialModels: Model[] = [
     likes: 1700000,
     brandUses: 125,
     comments: 18400,
-  },
-  {
-    id: 'stasy',
-    name: 'Stasy',
-    niche: 'Fashion',
-    subtitle: 'Modern resort-inspired lifestyle content',
-    image: '/wairk1/1.jpg',
-    likes: 9400,
-    brandUses: 84,
-    comments: 610,
   },
   {
     id: 'emma',
