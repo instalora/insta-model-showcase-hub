@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Lock, MessageCircle } from 'lucide-react';
+import { Lock, MessageCircle, UserRound } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'react-router-dom';
 
@@ -112,13 +112,13 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
               {model.subtitle}
             </p>
 
-            {/* Stats */}
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1.5">
-                <Heart className="w-4 h-4 text-brand-pink" />
-                <span>{formatNumber(model.likes)}</span>
-              </div>
-              <div className="flex items-center gap-1.5">
+              {/* Stats */}
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <UserRound className="w-4 h-4 text-brand-purple" />
+                  <span>{formatNumber(model.likes)}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
                 <Lock className="w-4 h-4 text-brand-purple" />
                 <span>{model.brandUses}</span>
               </div>
