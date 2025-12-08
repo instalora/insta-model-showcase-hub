@@ -1,10 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowLeft, CheckCircle, TrendingUp, Clock, Users, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import AspectAwareImage from "@/components/AspectAwareImage";
+import ImageGallery from "@/components/ImageGallery";
 
 const CaseStudyPromod: React.FC = () => {
   const metrics = [
@@ -29,57 +28,13 @@ const CaseStudyPromod: React.FC = () => {
   ];
 
   const galleryImages = [
-    "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1485968579169-a6b287d43f5d?w=600&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&h=800&fit=crop",
+    { id: "1", src: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=800&fit=crop", alt: "Promod campaign image 1", type: "image" as const },
+    { id: "2", src: "https://images.unsplash.com/photo-1485968579169-a6b287d43f5d?w=600&h=800&fit=crop", alt: "Promod campaign image 2", type: "image" as const },
+    { id: "3", src: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop", alt: "Promod campaign image 3", type: "image" as const },
+    { id: "4", src: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop", alt: "Promod campaign image 4", type: "image" as const },
+    { id: "5", src: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&h=800&fit=crop", alt: "Promod campaign image 5", type: "image" as const },
+    { id: "6", src: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=600&h=800&fit=crop", alt: "Promod campaign image 6", type: "image" as const },
   ];
-
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-
-  const openLightbox = (index: number) => {
-    setSelectedImageIndex(index);
-  };
-
-  const closeLightbox = () => {
-    setSelectedImageIndex(null);
-  };
-
-  const goToNextImage = useCallback(() => {
-    setSelectedImageIndex((currentIndex) => {
-      if (currentIndex === null) return currentIndex;
-      return (currentIndex + 1) % galleryImages.length;
-    });
-  }, [galleryImages.length]);
-
-  const goToPreviousImage = useCallback(() => {
-    setSelectedImageIndex((currentIndex) => {
-      if (currentIndex === null) return currentIndex;
-      return (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    });
-  }, [galleryImages.length]);
-
-  useEffect(() => {
-    if (selectedImageIndex === null) return;
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        goToPreviousImage();
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        goToNextImage();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [goToNextImage, goToPreviousImage, selectedImageIndex]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -305,62 +260,7 @@ const CaseStudyPromod: React.FC = () => {
               A selection of AI-generated UGC content created for Promod's winter collection campaign.
             </p>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="aspect-[3/4] rounded-xl overflow-hidden bg-muted group cursor-pointer"
-                onClick={() => openLightbox(index)}
-              >
-                <img
-                  src={image}
-                  alt={`Promod campaign image ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-          <Dialog open={selectedImageIndex !== null} onOpenChange={closeLightbox}>
-            <DialogContent className="max-w-5xl p-0 bg-transparent border-none">
-              {selectedImageIndex !== null && (
-                <div className="relative flex items-center justify-center min-h-[50vh]">
-                  <AspectAwareImage
-                    src={galleryImages[selectedImageIndex]}
-                    alt={`Promod campaign image ${selectedImageIndex + 1}`}
-                    className="rounded-lg max-h-[85vh]"
-                  />
-
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      goToPreviousImage();
-                    }}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 dark:bg-black/50 p-2 rounded-full"
-                    aria-label="Previous image"
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      goToNextImage();
-                    }}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 dark:bg-black/50 p-2 rounded-full"
-                    aria-label="Next image"
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-                </div>
-              )}
-            </DialogContent>
-          </Dialog>
+          <ImageGallery images={galleryImages} showGenerateButton={false} />
         </div>
       </section>
 
