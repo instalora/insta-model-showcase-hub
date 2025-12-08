@@ -38,6 +38,16 @@ const initialModels: Model[] = [
     comments: 610,
   },
   {
+    id: 'emma',
+    name: 'Emma',
+    niche: 'Fashion',
+    subtitle: 'Minimalist streetwear & editorial looks',
+    image: '/wairk2/1.jpg',
+    likes: 125000,
+    brandUses: 102,
+    comments: 2400,
+  },
+  {
     id: '1',
     name: 'Sophia Chen',
     niche: 'Fashion',
