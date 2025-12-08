@@ -283,21 +283,18 @@ const CaseStudyIman = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-primary/10 to-secondary/30 py-16">
-        <div className="container mx-auto px-6 md:px-10 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
-            Ready to Transform Your Brand's Content?
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Discover how epicTwin can help you find the perfect models and create authentic UGC content at scale.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/models">
-              <Button size="lg">Explore Models</Button>
-            </Link>
+      <section className="py-16 px-6 md:px-10">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="bg-gradient-to-r from-[#E456F4] to-[#A855F7] rounded-3xl p-8 md:p-12 text-center text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Transform Your Content?
+            </h2>
+            <p className="text-white/80 max-w-xl mx-auto mb-8">
+              Join hundreds of brands already creating stunning visuals with Instalora AI models.
+            </p>
             <Link to="/brands">
-              <Button size="lg" variant="outline">
-                Solutions for Brands
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                Start Free Trial
               </Button>
             </Link>
           </div>

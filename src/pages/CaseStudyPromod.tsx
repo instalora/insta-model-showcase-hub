@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { ArrowLeft, CheckCircle, TrendingUp, Clock, Users, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import ImageGallery from "@/components/ImageGallery";
+import { Button } from "@/components/ui/button";
 
 const CaseStudyPromod: React.FC = () => {
   const metrics = [
@@ -281,26 +282,19 @@ const CaseStudyPromod: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-secondary/30">
-        <div className="container mx-auto text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Ready to transform your content creation?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Join brands like Promod and discover how Instalora can revolutionize your marketing.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/brands"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-medium rounded-full hover:opacity-90 transition-opacity"
-            >
-              Get Started Today
-            </Link>
-            <Link 
-              to="/case-studies"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary text-secondary-foreground font-medium rounded-full hover:bg-secondary/80 transition-colors"
-            >
-              View More Case Studies
+      <section className="py-16 px-6 md:px-10">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="bg-gradient-to-r from-[#E456F4] to-[#A855F7] rounded-3xl p-8 md:p-12 text-center text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Transform Your Content?
+            </h2>
+            <p className="text-white/80 max-w-xl mx-auto mb-8">
+              Join hundreds of brands already creating stunning visuals with Instalora AI models.
+            </p>
+            <Link to="/brands">
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                Start Free Trial
+              </Button>
             </Link>
           </div>
         </div>
