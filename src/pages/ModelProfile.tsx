@@ -54,7 +54,7 @@ const modelsData: Record<string, {
     name: 'Amara',
     niche: 'Fitness & Lifestyle Muse',
     bio: `Amara blends athletic focus with lifestyle storytelling inspired by her @justamara.ai community. From track sessions to studio-ready portraits, she creates aspirational visuals that fit activewear launches, wellness brands, and aspirational social campaigns.`,
-    heroImage: '/amara/2.jpg',
+    heroImage: '/amara/3.jpg',
     avatar: '/amara/5.jpg',
     images: [
       { id: '1', src: '/amara/1.jpg', alt: 'Amara reflective portrait', type: 'image' },
