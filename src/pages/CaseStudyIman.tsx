@@ -10,17 +10,17 @@ const CaseStudyIman = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const galleryImages = [
-    { src: "/cs3/1.jpg", alt: "Amara for IMAN Cosmetics campaign" },
-    { src: "/cs3/2.jpg", alt: "Amara beauty portrait" },
-    { src: "/cs3/3.jpg", alt: "Amara makeup showcase" },
-    { src: "/cs3/4.jpg", alt: "Amara product styling" },
-    { src: "/cs3/5.jpg", alt: "Amara brand content" },
-    { src: "/cs3/6.jpg", alt: "Amara UGC content" },
-    { src: "/cs3/7.jpg", alt: "Amara UGC content" },
-    { src: "/cs3/8.jpg", alt: "Amara UGC content" },
-    { src: "/cs3/9.jpg", alt: "Amara UGC content" },
-    { src: "/cs3/10.jpg", alt: "Amara UGC content" },
-    { src: "/cs3/11.jpg", alt: "Amara UGC content" },
+    { src: "/cs/1.jpg", alt: "Amara for IMAN Cosmetics campaign" },
+    { src: "/cs/2.jpg", alt: "Amara beauty portrait" },
+    { src: "/cs/3.jpg", alt: "Amara makeup showcase" },
+    { src: "/cs/4.jpg", alt: "Amara product styling" },
+    { src: "/cs/5.jpg", alt: "Amara brand content" },
+    { src: "/cs/6.jpg", alt: "Amara UGC content" },
+    { src: "/cs/7.jpg", alt: "Amara UGC content" },
+    { src: "/cs/8.jpg", alt: "Amara UGC content" },
+    { src: "/cs/9.jpg", alt: "Amara UGC content" },
+    { src: "/cs/10.jpg", alt: "Amara UGC content" },
+    { src: "/cs/11.jpg", alt: "Amara UGC content" },
   ];
 
   const metrics = [
