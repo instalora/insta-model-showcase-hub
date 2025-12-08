@@ -205,7 +205,7 @@ const CaseStudyIman = () => {
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="aspect-square md:aspect-auto">
                   <img
-                    src="/amara/5.jpg"
+                    src="/amara/11.jpg"
                     alt="Amara - Featured Model"
                     className="w-full h-full object-cover"
                   />
