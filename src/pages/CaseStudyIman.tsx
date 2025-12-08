@@ -21,6 +21,11 @@ const CaseStudyIman = () => {
     { src: "/cs/9.jpg", alt: "Amara UGC content" },
     { src: "/cs/10.jpg", alt: "Amara UGC content" },
     { src: "/cs/11.jpg", alt: "Amara UGC content" },
+    { src: "/cs/12.jpg", alt: "Amara UGC content" },
+    { src: "/cs/13.jpg", alt: "Amara UGC content" },
+    { src: "/cs/14.jpg", alt: "Amara UGC content" },
+    { src: "/cs/15.jpg", alt: "Amara UGC content" },
+    { src: "/cs/16.jpg", alt: "Amara UGC content" },
   ];
 
   const metrics = [
