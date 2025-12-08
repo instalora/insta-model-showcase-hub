@@ -3,29 +3,26 @@ import { ArrowLeft, TrendingUp, Users, Image, Clock, CheckCircle, Quote } from "
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import ImageGallery from "@/components/ImageGallery";
 
 const CaseStudyIman = () => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-
   const galleryImages = [
-    { src: "/cs/1.jpg", alt: "Amara for IMAN Cosmetics campaign" },
-    { src: "/cs/2.jpg", alt: "Amara beauty portrait" },
-    { src: "/cs/3.jpg", alt: "Amara makeup showcase" },
-    { src: "/cs/4.jpg", alt: "Amara product styling" },
-    { src: "/cs/5.jpg", alt: "Amara brand content" },
-    { src: "/cs/6.jpg", alt: "Amara UGC content" },
-    { src: "/cs/7.jpg", alt: "Amara UGC content" },
-    { src: "/cs/8.jpg", alt: "Amara UGC content" },
-    { src: "/cs/9.jpg", alt: "Amara UGC content" },
-    { src: "/cs/10.jpg", alt: "Amara UGC content" },
-    { src: "/cs/11.jpg", alt: "Amara UGC content" },
-    { src: "/cs/12.jpg", alt: "Amara UGC content" },
-    { src: "/cs/13.jpg", alt: "Amara UGC content" },
-    { src: "/cs/14.jpg", alt: "Amara UGC content" },
-    { src: "/cs/15.jpg", alt: "Amara UGC content" },
-    { src: "/cs/16.jpg", alt: "Amara UGC content" },
+    { id: "1", src: "/cs/1.jpg", alt: "Amara for IMAN Cosmetics campaign", type: "image" as const },
+    { id: "2", src: "/cs/2.jpg", alt: "Amara beauty portrait", type: "image" as const },
+    { id: "3", src: "/cs/3.jpg", alt: "Amara makeup showcase", type: "image" as const },
+    { id: "4", src: "/cs/4.jpg", alt: "Amara product styling", type: "image" as const },
+    { id: "5", src: "/cs/5.jpg", alt: "Amara brand content", type: "image" as const },
+    { id: "6", src: "/cs/6.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "7", src: "/cs/7.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "8", src: "/cs/8.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "9", src: "/cs/9.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "10", src: "/cs/10.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "11", src: "/cs/11.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "12", src: "/cs/12.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "13", src: "/cs/13.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "14", src: "/cs/14.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "15", src: "/cs/15.jpg", alt: "Amara UGC content", type: "image" as const },
+    { id: "16", src: "/cs/16.jpg", alt: "Amara UGC content", type: "image" as const },
   ];
 
   const metrics = [
@@ -265,65 +262,11 @@ const CaseStudyIman = () => {
           <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
             A selection of the UGC content created for IMAN Cosmetics featuring Amara and the Radiant Glow collection.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="aspect-square rounded-xl overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
-                onClick={() => setSelectedImageIndex(index)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <ImageGallery images={galleryImages} showGenerateButton={false} />
           </div>
         </div>
       </section>
-
-      {/* Lightbox Dialog */}
-      <Dialog open={selectedImageIndex !== null} onOpenChange={() => setSelectedImageIndex(null)}>
-        <DialogContent className="max-w-4xl p-0 bg-transparent border-none">
-          <button
-            onClick={() => setSelectedImageIndex(null)}
-            className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-foreground hover:bg-background transition-colors"
-          >
-            ✕
-          </button>
-          {selectedImageIndex !== null && (
-            <div className="relative">
-              <img
-                src={galleryImages[selectedImageIndex].src}
-                alt={galleryImages[selectedImageIndex].alt}
-                className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
-              />
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedImageIndex(prev => prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : null);
-                  }}
-                  className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-foreground hover:bg-background transition-colors"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedImageIndex(prev => prev !== null ? (prev + 1) % galleryImages.length : null);
-                  }}
-                  className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-foreground hover:bg-background transition-colors"
-                >
-                  →
-                </button>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
 
       {/* Testimonial */}
       <section className="container mx-auto px-6 md:px-10 py-16">

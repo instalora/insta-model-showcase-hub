@@ -15,10 +15,15 @@ interface Image {
 
 interface ImageGalleryProps {
   images: Image[];
-  onGenerateClick: () => void;
+  onGenerateClick?: () => void;
+  showGenerateButton?: boolean;
 }
 
-const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({
+  images,
+  onGenerateClick,
+  showGenerateButton = true,
+}) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const openLightbox = (index: number) => {
@@ -90,15 +95,17 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onGenerateClick }) 
         ))}
       </div>
 
-      <div className="w-full flex justify-center mt-8">
-        <Button 
-          onClick={onGenerateClick}
-          size="lg" 
-          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200 ease-in-out shadow-md hover:shadow-lg"
-        >
-          Generate Image
-        </Button>
-      </div>
+      {showGenerateButton && onGenerateClick && (
+        <div className="w-full flex justify-center mt-8">
+          <Button
+            onClick={onGenerateClick}
+            size="lg"
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200 ease-in-out shadow-md hover:shadow-lg"
+          >
+            Generate Image
+          </Button>
+        </div>
+      )}
 
       <Dialog open={selectedImageIndex !== null} onOpenChange={closeLightbox}>
         <DialogContent className="max-w-5xl p-0 bg-transparent border-none [&>button]:hidden">
