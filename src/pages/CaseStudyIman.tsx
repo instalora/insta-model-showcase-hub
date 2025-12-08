@@ -186,10 +186,10 @@ const CaseStudyIman = () => {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-foreground mb-6">The Solution</h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-            Through epicTwin's model discovery platform, IMAN Cosmetics found Amara—a model whose natural beauty, confident presence, and authentic style perfectly aligned with the brand's values of empowerment and inclusivity.
+            Through epicTwin's model discovery platform, IMAN Cosmetics found Amara, a model whose natural beauty, confident presence, and authentic style perfectly aligned with the brand's values of empowerment and inclusivity.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Using epicTwin's AI-powered content generation tools, the brand was able to create over 85 unique pieces of UGC content featuring Amara styled with products from the new collection—all within just 3 days.
+            Using epicTwin's AI-powered content generation tools, the brand was able to create over 85 unique pieces of UGC content featuring Amara styled with products from the new collection, all within just 3 days.
           </p>
         </div>
       </section>
