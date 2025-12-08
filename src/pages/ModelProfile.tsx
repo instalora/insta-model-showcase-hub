@@ -53,8 +53,8 @@ const modelsData: Record<string, {
     name: 'Stasy',
     niche: 'Fashion & Lifestyle Muse',
     bio: `Stasy blends contemporary fashion with relaxed resort vibes, creating versatile visuals for luxury travel, beauty, and lifestyle campaigns. Her warm palette and confident poses fit lookbooks, social launches, and editorial storytelling.`,
-    heroImage: '/wairk1/8.jpg',
-    avatar: '/wairk1/6.jpg',
+    heroImage: '/wairk1/1.jpg',
+    avatar: '/wairk1/2.jpg',
     images: [
       { id: '1', src: '/wairk1/1.jpg', alt: 'Stasy sunlit portrait', type: 'image' },
       { id: '2', src: '/wairk1/2.jpg', alt: 'Stasy in resort wear', type: 'image' },
@@ -68,8 +68,8 @@ const modelsData: Record<string, {
       { id: '10', src: '/wairk1/10.jpg', alt: 'Stasy fashionable street style', type: 'image' },
     ],
     stats: { generatedImages: 1320, brandCollaborations: 84, uniqueStyles: 22, creativePrompts: 540 },
-    social: { likes: 9400, shares: 2300, comments: 610 },
-    socials: [{ platform: 'instagram', url: 'https://www.instagram.com' }]
+    social: { likes: 100000, shares: 2300, comments: 610 },
+    socials: [{ platform: 'instagram', url: 'https://www.instagram.com/wairkstudio/' }]
   },
   '1': {
     id: '1',
