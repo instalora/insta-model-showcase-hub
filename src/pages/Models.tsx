@@ -27,6 +27,16 @@ const initialModels: Model[] = [
     comments: 610,
   },
   {
+    id: 'amara',
+    name: 'Amara',
+    niche: 'Fitness',
+    subtitle: 'Athletic elegance meets lifestyle storytelling',
+    image: '/amara/6.jpg',
+    likes: 98500,
+    brandUses: 68,
+    comments: 1300,
+  },
+  {
     id: 'camila',
     name: 'Camilla Gimenez',
     niche: 'AI & Tech',

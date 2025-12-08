@@ -49,6 +49,29 @@ const modelsData: Record<string, {
     social: { likes: 100000, shares: 2300, comments: 610 },
     socials: [{ platform: 'instagram', url: 'https://www.instagram.com/wairkstudio/' }]
   },
+  'amara': {
+    id: 'amara',
+    name: 'Amara',
+    niche: 'Fitness & Lifestyle Muse',
+    bio: `Amara blends athletic focus with lifestyle storytelling inspired by her @justamara.ai community. From track sessions to studio-ready portraits, she creates aspirational visuals that fit activewear launches, wellness brands, and aspirational social campaigns.`,
+    heroImage: '/amara/2.jpg',
+    avatar: '/amara/5.jpg',
+    images: [
+      { id: '1', src: '/amara/1.jpg', alt: 'Amara reflective portrait', type: 'image' },
+      { id: '2', src: '/amara/2.jpg', alt: 'Amara in athletic set', type: 'image' },
+      { id: '3', src: '/amara/3.jpg', alt: 'Amara outdoor workout', type: 'image' },
+      { id: '4', src: '/amara/4.jpg', alt: 'Amara track session', type: 'image' },
+      { id: '5', src: '/amara/5.jpg', alt: 'Amara studio portrait', type: 'image' },
+      { id: '6', src: '/amara/6.jpg', alt: 'Amara confident close-up', type: 'image' },
+      { id: '7', src: '/amara/7.jpg', alt: 'Amara sporty pose', type: 'image' },
+      { id: '8', src: '/amara/8.jpg', alt: 'Amara minimalist shoot', type: 'image' },
+      { id: '9', src: '/amara/9.jpg', alt: 'Amara creative styling', type: 'image' },
+      { id: '10', src: '/amara/10.jpg', alt: 'Amara seated fashion look', type: 'image' },
+    ],
+    stats: { generatedImages: 1640, brandCollaborations: 68, uniqueStyles: 26, creativePrompts: 820 },
+    social: { likes: 98500, shares: 4200, comments: 1300 },
+    socials: [{ platform: 'instagram', url: 'https://www.instagram.com/justamara.ai/' }]
+  },
   'camila': {
     id: 'camila',
     name: 'Camilla',
