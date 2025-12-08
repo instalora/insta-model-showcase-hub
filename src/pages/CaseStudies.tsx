@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 interface CaseStudy {
   id: string;
@@ -99,21 +99,21 @@ const CaseStudies: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-secondary/30">
-        <div className="container mx-auto text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Ready to create your success story?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Join hundreds of brands already using Instalora to revolutionize their content creation.
-          </p>
-          <Link 
-            to="/brands"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-medium rounded-full hover:opacity-90 transition-opacity"
-          >
-            Get Started
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+      <section className="py-16 px-6 md:px-10">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="bg-gradient-to-r from-[#E456F4] to-[#A855F7] rounded-3xl p-8 md:p-12 text-center text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Transform Your Content?
+            </h2>
+            <p className="text-white/80 max-w-xl mx-auto mb-8">
+              Join hundreds of brands already creating stunning visuals with Instalora AI models.
+            </p>
+            <Link to="/brands">
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                Start Free Trial
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
