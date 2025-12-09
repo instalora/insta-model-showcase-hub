@@ -13,6 +13,7 @@ import CaseStudies from "./pages/CaseStudies";
 import CaseStudyPromod from "./pages/CaseStudyPromod";
 import CaseStudyIman from "./pages/CaseStudyIman";
 import CaseStudyPirelli from "./pages/CaseStudyPirelli";
+import CaseStudyHermes from "./pages/CaseStudyHermes";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/case-study/promod" element={<CaseStudyPromod />} />
           <Route path="/case-study/iman-cosmetics" element={<CaseStudyIman />} />
           <Route path="/case-study/pirelli" element={<CaseStudyPirelli />} />
+          <Route path="/case-study/hermes" element={<CaseStudyHermes />} />
           <Route path="/about" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

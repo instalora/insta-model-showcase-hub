@@ -126,6 +126,9 @@ const modelsData: Record<string, {
     ],
     stats: { generatedImages: 1480, brandCollaborations: 102, uniqueStyles: 29, creativePrompts: 610 },
     social: { likes: 240000, shares: 5800, comments: 2400 },
+    campaigns: [
+      { id: 'hermes', brand: 'Hermès', title: 'Luxury Collection Campaign', image: '/cs3/1.jpg', url: '/case-study/hermes' }
+    ]
   },
   '1': {
     id: '1',
