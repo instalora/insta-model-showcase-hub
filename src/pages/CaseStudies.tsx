@@ -31,6 +31,12 @@ const caseStudies: CaseStudy[] = [
     title: "Pirelli: Premium Campaign Content with AI-Powered Model Discovery",
     image: "/wairk1/1.jpg",
     tags: ["Automotive", "Lifestyle", "Premium"],
+  },
+  {
+    id: "hermes",
+    title: "Hermès: Luxury Campaign Content with AI-Powered Model Discovery",
+    image: "/cs3/1.jpg",
+    tags: ["Luxury", "Fashion", "Premium"],
     highlightTag: "New"
   },
 ];
