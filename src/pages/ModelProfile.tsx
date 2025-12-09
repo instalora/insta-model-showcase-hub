@@ -25,6 +25,7 @@ const modelsData: Record<string, {
   stats: { generatedImages: number; brandCollaborations: number; uniqueStyles: number; creativePrompts: number };
   social: { likes: number; shares: number; comments: number };
   socials?: { platform: 'instagram' | 'tiktok' | 'twitter' | 'youtube'; url: string }[];
+  campaigns?: { id: string; brand: string; title: string; image: string; url: string }[];
 }> = {
   'stasy': {
     id: 'stasy',
@@ -47,7 +48,10 @@ const modelsData: Record<string, {
     ],
     stats: { generatedImages: 1320, brandCollaborations: 84, uniqueStyles: 22, creativePrompts: 540 },
     social: { likes: 100000, shares: 2300, comments: 610 },
-    socials: [{ platform: 'instagram', url: 'https://www.instagram.com/wairkstudio/' }]
+    socials: [{ platform: 'instagram', url: 'https://www.instagram.com/wairkstudio/' }],
+    campaigns: [
+      { id: 'pirelli', brand: 'Pirelli', title: 'Performance Collection Campaign', image: '/cs2/1.jpg', url: '/case-study/pirelli' }
+    ]
   },
   'amara': {
     id: 'amara',
@@ -71,7 +75,10 @@ const modelsData: Record<string, {
     ],
     stats: { generatedImages: 1640, brandCollaborations: 68, uniqueStyles: 26, creativePrompts: 820 },
     social: { likes: 98500, shares: 4200, comments: 1300 },
-    socials: [{ platform: 'instagram', url: 'https://www.instagram.com/justamara.ai/' }]
+    socials: [{ platform: 'instagram', url: 'https://www.instagram.com/justamara.ai/' }],
+    campaigns: [
+      { id: 'iman', brand: 'IMAN Cosmetics', title: 'New Collection Launch', image: '/amara/3.jpg', url: '/case-study/iman-cosmetics' }
+    ]
   },
   'camila': {
     id: 'camila',
@@ -259,6 +266,39 @@ const ModelProfile = () => {
             </div>
           </div>
           
+          {/* Campaigns Section */}
+          {modelData.campaigns && modelData.campaigns.length > 0 && (
+            <div className="mt-16 mb-8">
+              <h2 className="text-2xl font-bold font-display mb-8 text-center">Featured Campaigns</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {modelData.campaigns.map((campaign) => (
+                  <Link 
+                    key={campaign.id} 
+                    to={campaign.url}
+                    className="group relative overflow-hidden rounded-2xl bg-muted transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <div className="aspect-[16/9] overflow-hidden">
+                      <img 
+                        src={campaign.image} 
+                        alt={campaign.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-2">
+                        {campaign.brand}
+                      </span>
+                      <h3 className="text-xl font-bold text-white">{campaign.title}</h3>
+                      <p className="text-white/70 text-sm mt-1">View case study →</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mt-16 mb-8">
             <h2 className="text-2xl font-bold font-display mb-8 text-center">Model Stats</h2>
             
