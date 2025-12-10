@@ -7,8 +7,11 @@ export interface Model {
   id: string;
   slug: string;
   name: string;
+  title: string;
   categoryName: string;
   coverImageUrl: string;
+  listImageUrl: string;
+  image: string;
   rating: number;
   audienceCount: number;
   likeCount: number;
@@ -66,6 +69,8 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
   };
 
   const gradientClass = nicheColors[model.categoryName] || 'from-brand-pink to-brand-purple';
+  const cardImage = model.listImageUrl || model.coverImageUrl || model.image;
+  const heading = model.title || model.name;
 
   return (
     <div
@@ -85,8 +90,8 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
               <Skeleton className="absolute inset-0 rounded-none" />
             )}
             <img
-              src={model.coverImageUrl}
-              alt={model.name}
+              src={cardImage}
+              alt={heading}
               className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
@@ -104,7 +109,7 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
 
           <div className="p-5">
             <h3 className="text-xl font-bold font-display text-foreground mb-1">
-              {model.name}
+              {heading}
             </h3>
             <p className="text-sm text-muted-foreground mb-4">
               Engages {formatNumber(model.audienceCount)}+ followers across campaigns.
