@@ -82,7 +82,7 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <Link
-        to={`/model/${model.slug || model.id}`}
+        to={`/model/${model.slug}`}
         className="group block h-full"
       >
         <div className="relative overflow-hidden rounded-xl bg-card shadow-md shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-background">
