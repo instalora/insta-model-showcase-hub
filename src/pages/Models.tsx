@@ -3,6 +3,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ModelCard, { Model } from '@/components/ModelCard';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ApiModel } from '@/types/api';
+import { getCachedModel, setCachedModel } from '@/utils/modelCache';
 
 interface ApiModel {
   id: string;
@@ -63,6 +65,38 @@ const Models: React.FC = () => {
   useEffect(() => {
     fetchModels();
   }, [fetchModels]);
+
+  useEffect(() => {
+    if (!models.length) return;
+
+    const controller = new AbortController();
+
+    const prefetchModelDetails = async () => {
+      for (const model of models) {
+        const cacheKey = (model.slug || model.id).toLowerCase();
+
+        if (getCachedModel(cacheKey)) continue;
+
+        try {
+          const response = await fetch(`https://api-3mtz.onrender.com/v1.0/models/public/${cacheKey}`, {
+            signal: controller.signal,
+          });
+
+          if (!response.ok) continue;
+
+          const data: ApiModel = await response.json();
+          setCachedModel(cacheKey, data);
+        } catch (prefetchError) {
+          if (controller.signal.aborted) return;
+          console.error('Failed to prefetch model details', prefetchError);
+        }
+      }
+    };
+
+    prefetchModelDetails();
+
+    return () => controller.abort();
+  }, [models]);
 
   return (
     <div className="min-h-screen bg-background">
