@@ -9,6 +9,7 @@ interface ApiModel {
   list_image_url: string;
   slug: string;
   image: string;
+  name?: string;
   title: string;
   category_name: string;
   rating: number;
@@ -39,7 +40,7 @@ const Models: React.FC = () => {
       const mappedModels: Model[] = items.map((item) => ({
         id: item.id,
         slug: item.slug,
-        name: item.title,
+        name: item.name || item.title,
         title: item.title,
         categoryName: item.category_name,
         coverImageUrl: item.list_image_url,

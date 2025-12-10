@@ -70,7 +70,9 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
 
   const gradientClass = nicheColors[model.categoryName] || 'from-brand-pink to-brand-purple';
   const cardImage = model.listImageUrl || model.coverImageUrl || model.image;
-  const heading = model.title || model.name;
+  const heading = model.name || model.title;
+  const description =
+    model.title || `Engages ${formatNumber(model.audienceCount)}+ followers across campaigns.`;
 
   return (
     <div
@@ -112,7 +114,7 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
               {heading}
             </h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Engages {formatNumber(model.audienceCount)}+ followers across campaigns.
+              {description}
             </p>
 
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
