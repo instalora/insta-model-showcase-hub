@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Instagram, HeartPlus } from 'lucide-react';
+import { Instagram, UserRound } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 
@@ -112,7 +112,7 @@ const ModelInfo: React.FC<ModelInfoProps> = ({ name, modelId, niche, bio, avatar
               className="shrink-0"
               aria-label={isFavorite ? "Remove from favorites" : "Save to favorites"}
             >
-              <HeartPlus
+              <UserRound
                 className={`w-5 h-5 transition-colors ${isFavorite ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}
               />
             </Button>
