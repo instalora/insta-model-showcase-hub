@@ -8,6 +8,7 @@ interface ApiModel {
   id: string;
   list_image_url: string;
   slug: string;
+  image: string;
   title: string;
   category_name: string;
   rating: number;
@@ -39,8 +40,11 @@ const Models: React.FC = () => {
         id: item.id,
         slug: item.slug,
         name: item.title,
+        title: item.title,
         categoryName: item.category_name,
         coverImageUrl: item.list_image_url,
+        listImageUrl: item.list_image_url,
+        image: item.image,
         rating: item.rating,
         audienceCount: item.audience_count,
         likeCount: item.like_count,
