@@ -12,7 +12,7 @@ import PurchaseModal from '@/components/PurchaseModal';
 import ModelCard, { Model as ShowcaseModel } from '@/components/ModelCard';
 import { toast } from "@/components/ui/use-toast";
 
-type ApiAsset = {
+type ApiAssetObject = {
   id?: string | number;
   url?: string;
   src?: string;
@@ -23,6 +23,8 @@ type ApiAsset = {
   media_type?: 'image' | 'video';
   alt?: string;
 };
+
+type ApiAsset = string | ApiAssetObject;
 
 type ApiSocial = {
   platform?: 'instagram' | 'tiktok' | 'twitter' | 'youtube';
@@ -89,15 +91,27 @@ const FALLBACK_IMAGE = 'https://placehold.co/1200x800?text=Model+visual';
 const mapAssetsToGallery = (assets: ApiAsset[], modelName: string): GalleryImage[] => {
   return assets
     .map((asset, index) => {
-      const src = asset.url || asset.image_url || asset.thumbnail_url || asset.video_url || asset.src || '';
+      const normalizedAsset: ApiAssetObject = typeof asset === 'string' ? { url: asset } : asset || {};
+      const src =
+        normalizedAsset.url ||
+        normalizedAsset.image_url ||
+        normalizedAsset.thumbnail_url ||
+        normalizedAsset.video_url ||
+        normalizedAsset.src ||
+        '';
+
       if (!src) return null;
 
-      const type = asset.type || asset.media_type || (asset.video_url ? 'video' : 'image') || 'image';
+      const type =
+        normalizedAsset.type ||
+        normalizedAsset.media_type ||
+        (normalizedAsset.video_url ? 'video' : 'image') ||
+        'image';
 
       return {
-        id: (asset.id ?? `asset-${index}`).toString(),
+        id: (normalizedAsset.id ?? `asset-${index}`).toString(),
         src,
-        alt: asset.alt || `${modelName || 'Model'} asset ${index + 1}`,
+        alt: normalizedAsset.alt || `${modelName || 'Model'} asset ${index + 1}`,
         type: type === 'video' ? 'video' : 'image',
       };
     })
@@ -107,7 +121,9 @@ const mapAssetsToGallery = (assets: ApiAsset[], modelName: string): GalleryImage
 const mapSimilarModels = (models: ApiModel[]): ShowcaseModel[] => {
   return models
     .map((model, index) => {
-      const coverImage = model.cover_image_url || model.avatar_url || model.assets?.[0]?.url;
+      const firstAsset = model.assets?.[0];
+      const assetCover = typeof firstAsset === 'string' ? firstAsset : firstAsset?.url;
+      const coverImage = model.cover_image_url || model.avatar_url || assetCover;
 
       if (!model.slug && !model.id) return null;
 
