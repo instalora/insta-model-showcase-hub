@@ -56,6 +56,7 @@ type ApiModel = {
   cover_image_url?: string;
   avatar_url?: string;
   assets?: ApiAsset[];
+  rating?: number;
   model_stats?: {
     generations?: number;
     brand_used?: number;
@@ -68,6 +69,8 @@ type ApiModel = {
     unique_styles?: number;
     creative_prompts?: number;
   };
+  audience_count?: number;
+  like_count?: number;
   likes?: number;
   shares?: number;
   comments?: number;
@@ -146,9 +149,9 @@ const mapSimilarModels = (models: ApiModel[]): ShowcaseModel[] => {
         coverImageUrl: coverImage || FALLBACK_IMAGE,
         listImageUrl: coverImage || FALLBACK_IMAGE,
         image: coverImage || FALLBACK_IMAGE,
-        rating: 4.8,
-        audienceCount: model.likes ?? 0,
-        likeCount: model.comments ?? 0,
+        rating: model.rating ?? 0,
+        audienceCount: model.audience_count ?? model.likes ?? 0,
+        likeCount: model.like_count ?? model.comments ?? 0,
       } as ShowcaseModel;
     })
     .filter((model): model is ShowcaseModel => Boolean(model));
@@ -207,9 +210,9 @@ const mapApiModelToViewModel = (apiModel: ApiModel, fallbackSlug: string): Model
       creativePrompts: modelStats.prompts ?? performance.creative_prompts ?? 0,
     },
     social: {
-      likes: apiModel.likes ?? 0,
-      shares: apiModel.shares ?? 0,
-      comments: apiModel.comments ?? 0,
+      likes: apiModel.like_count ?? apiModel.likes ?? 0,
+      shares: apiModel.audience_count ?? apiModel.shares ?? 0,
+      comments: apiModel.rating ?? apiModel.comments ?? 0,
     },
     socials: socials.length ? socials : undefined,
     campaigns: campaigns.length ? campaigns : undefined,
