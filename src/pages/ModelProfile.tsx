@@ -222,7 +222,8 @@ const mapApiModelToViewModel = (apiModel: ApiModel, fallbackSlug: string): Model
 
 const ModelProfile = () => {
   const { id } = useParams<{ id: string }>();
-  const modelKey = id === 'camilla' ? 'camila' : id;
+  const normalizedId = (id || '').toLowerCase();
+  const modelKey = normalizedId === 'camila' ? 'camilla' : normalizedId;
   const [modelData, setModelData] = useState<ModelData | null>(null);
   const [similarModels, setSimilarModels] = useState<ShowcaseModel[]>([]);
   const [loading, setLoading] = useState(true);
