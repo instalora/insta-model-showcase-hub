@@ -39,7 +39,9 @@ type ApiCampaign = {
   brand?: string;
   title?: string;
   image?: string;
+  cover_image?: string;
   cover_image_url?: string;
+  summary?: string;
   url?: string;
   link?: string;
 };
@@ -90,7 +92,7 @@ type ModelData = {
   stats: { generatedImages: number; brandCollaborations: number; uniqueStyles: number; creativePrompts: number };
   social: { likes: number; shares: number; comments: number };
   socials?: { platform: 'instagram' | 'tiktok' | 'threads' | 'twitter' | 'youtube'; url: string }[];
-  campaigns?: { id: string; brand: string; title: string; image: string; url: string }[];
+  campaigns?: { id: string; brand: string; title: string; image: string; url: string; summary?: string }[];
   similarModels?: ShowcaseModel[];
 };
 
@@ -178,10 +180,11 @@ const mapApiModelToViewModel = (apiModel: ApiModel, fallbackSlug: string): Model
   const campaigns = (apiModel.campaigns || [])
     .map((campaign, index) => ({
       id: campaign.id || `campaign-${index}`,
-      brand: campaign.brand || 'Featured Brand',
+      brand: campaign.brand || campaign.title || 'Featured Brand',
       title: campaign.title || 'Campaign',
-      image: campaign.image || campaign.cover_image_url || heroImage,
+      image: campaign.cover_image || campaign.cover_image_url || campaign.image || heroImage,
       url: campaign.url || campaign.link || '#',
+      summary: campaign.summary,
     }))
     .filter((campaign) => Boolean(campaign.image));
 
@@ -395,12 +398,15 @@ const ModelProfile = () => {
                         {campaign.brand}
                       </span>
                       <h3 className="text-xl font-bold text-white">{campaign.title}</h3>
-                      <p className="text-white/70 text-sm mt-1">View case study →</p>
+                      {campaign.summary && (
+                        <p className="text-white/80 text-sm mt-2 line-clamp-2">{campaign.summary}</p>
+                      )}
+                      <p className="text-white/70 text-sm mt-2">View case study →</p>
                     </div>
                   </Link>
                 ))}
-              </div>
             </div>
+          </div>
           )}
 
           <div className="mt-16 mb-8">
