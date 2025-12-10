@@ -27,7 +27,8 @@ type ApiAssetObject = {
 type ApiAsset = string | ApiAssetObject;
 
 type ApiSocial = {
-  platform?: 'instagram' | 'tiktok' | 'twitter' | 'youtube';
+  platform?: 'instagram' | 'tiktok' | 'threads' | 'twitter' | 'youtube';
+  type?: 'instagram' | 'tiktok' | 'threads' | 'twitter' | 'youtube';
   url?: string;
   handle?: string;
   link?: string;
@@ -64,6 +65,7 @@ type ApiModel = {
   comments?: number;
   socials?: ApiSocial[];
   social_links?: ApiSocial[];
+  external_links?: ApiSocial[];
   campaigns?: ApiCampaign[];
   similar_models?: ApiModel[];
   related_models?: ApiModel[];
@@ -81,7 +83,7 @@ type ModelData = {
   images: GalleryImage[];
   stats: { generatedImages: number; brandCollaborations: number; uniqueStyles: number; creativePrompts: number };
   social: { likes: number; shares: number; comments: number };
-  socials?: { platform: 'instagram' | 'tiktok' | 'twitter' | 'youtube'; url: string }[];
+  socials?: { platform: 'instagram' | 'tiktok' | 'threads' | 'twitter' | 'youtube'; url: string }[];
   campaigns?: { id: string; brand: string; title: string; image: string; url: string }[];
   similarModels?: ShowcaseModel[];
 };
@@ -151,9 +153,15 @@ const mapApiModelToViewModel = (apiModel: ApiModel, fallbackSlug: string): Model
   const niche = apiModel.subtitle || (apiModel.genres && apiModel.genres.length ? apiModel.genres.join(' • ') : 'Digital Muse');
   const performance = apiModel.performance_stats || {};
 
-  const socials = (apiModel.socials || apiModel.social_links || [])
+  const socialSources = [
+    ...(apiModel.socials || []),
+    ...(apiModel.social_links || []),
+    ...(apiModel.external_links || []),
+  ];
+
+  const socials = socialSources
     .map((social, index) => ({
-      platform: social.platform || 'instagram',
+      platform: social.platform || social.type || 'instagram',
       url: social.url || social.link || social.handle || '#',
       id: index,
     }))
