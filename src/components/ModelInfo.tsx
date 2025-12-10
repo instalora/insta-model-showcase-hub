@@ -10,8 +10,14 @@ const TikTokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const ThreadsIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm5.168 11.42c-.135-.742-.43-1.38-.88-1.908-.37-.422-.87-.77-1.48-1.03a4.16 4.16 0 0 0-2.01-.452V9.7c.56.09 1.04.25 1.42.49.44.28.74.64.9 1.1.08.22.14.47.18.73H12.8c-.58 0-1.03.45-1.03 1 0 .55.45 1 1.03 1h1.83c-.06.35-.16.67-.32.96-.32.59-.82 1.02-1.48 1.28-.4.16-.86.24-1.35.24-1.1 0-1.97-.33-2.61-.99-.61-.63-.92-1.5-.92-2.6 0-1.04.32-1.88.95-2.52.63-.64 1.48-.96 2.55-.96V8.3c-1.42 0-2.6.46-3.52 1.36C6.95 10.54 6.5 11.74 6.5 13.2c0 1.48.45 2.66 1.34 3.55.9.9 2.11 1.35 3.64 1.35 1.6 0 2.9-.5 3.87-1.5.87-.9 1.34-2.1 1.34-3.58-.01-.21-.02-.42-.07-.6z" />
+  </svg>
+);
+
 interface Social {
-  platform: 'instagram' | 'tiktok' | 'twitter' | 'youtube';
+  platform: 'instagram' | 'tiktok' | 'threads' | 'twitter' | 'youtube';
   url: string;
 }
 
@@ -59,6 +65,8 @@ const ModelInfo: React.FC<ModelInfoProps> = ({ name, modelId, niche, bio, avatar
         return <Instagram className="w-5 h-5" />;
       case 'tiktok':
         return <TikTokIcon className="w-5 h-5" />;
+      case 'threads':
+        return <ThreadsIcon className="w-5 h-5" />;
       default:
         return null;
     }
