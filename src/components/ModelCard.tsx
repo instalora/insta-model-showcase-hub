@@ -70,9 +70,8 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
 
   const gradientClass = nicheColors[model.categoryName] || 'from-brand-pink to-brand-purple';
   const cardImage = model.listImageUrl || model.coverImageUrl || model.image;
-  const heading = model.name || model.title;
-  const description =
-    model.title || `Engages ${formatNumber(model.audienceCount)}+ followers across campaigns.`;
+  const heading = model.name;
+  const description = model.title;
 
   return (
     <div
