@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://api-3mtz.onrender.com/v1.0/$1"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
