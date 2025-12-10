@@ -54,6 +54,12 @@ type ApiModel = {
   cover_image_url?: string;
   avatar_url?: string;
   assets?: ApiAsset[];
+  model_stats?: {
+    generations?: number;
+    brand_used?: number;
+    unique_styles?: number;
+    prompts?: number;
+  };
   performance_stats?: {
     generated_images?: number;
     brand_collaborations?: number;
@@ -151,6 +157,7 @@ const mapApiModelToViewModel = (apiModel: ApiModel, fallbackSlug: string): Model
   const heroImage = apiModel.cover_image_url || assets[0]?.src || apiModel.avatar_url || FALLBACK_IMAGE;
   const avatar = apiModel.avatar_url || assets[1]?.src || heroImage;
   const niche = apiModel.subtitle || (apiModel.genres && apiModel.genres.length ? apiModel.genres.join(' • ') : 'Digital Muse');
+  const modelStats = apiModel.model_stats || {};
   const performance = apiModel.performance_stats || {};
 
   const socialSources = [
@@ -191,10 +198,10 @@ const mapApiModelToViewModel = (apiModel: ApiModel, fallbackSlug: string): Model
       { id: 'fallback', src: heroImage, alt: `${apiModel.name || 'Model'} hero image`, type: 'image' },
     ],
     stats: {
-      generatedImages: performance.generated_images ?? 0,
-      brandCollaborations: performance.brand_collaborations ?? 0,
-      uniqueStyles: performance.unique_styles ?? 0,
-      creativePrompts: performance.creative_prompts ?? 0,
+      generatedImages: modelStats.generations ?? performance.generated_images ?? 0,
+      brandCollaborations: modelStats.brand_used ?? performance.brand_collaborations ?? 0,
+      uniqueStyles: modelStats.unique_styles ?? performance.unique_styles ?? 0,
+      creativePrompts: modelStats.prompts ?? performance.creative_prompts ?? 0,
     },
     social: {
       likes: apiModel.likes ?? 0,
