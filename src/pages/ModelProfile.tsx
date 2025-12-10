@@ -280,8 +280,8 @@ const ModelProfile = () => {
 
       <main className="flex-grow">
         <HeroSection
-          name={modelData.name}
-          niche={modelData.niche}
+          name={`Meet ${modelData.name}`}
+          niche={`Your ${modelData.niche}`}
           heroImageSrc={modelData.heroImage}
           onGenerateClick={handleGenerateClick}
           freeGenerationsLeft={freeGenerationsLeft}
