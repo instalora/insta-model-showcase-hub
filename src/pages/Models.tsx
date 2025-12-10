@@ -15,7 +15,7 @@ interface ApiModel {
   like_count: number;
 }
 
-const MODELS_ENDPOINT = '/api/models/public';
+const MODELS_ENDPOINT = 'https://api-3mtz.onrender.com/v1.0/models/public';
 
 const Models: React.FC = () => {
   const [models, setModels] = useState<Model[]>([]);
