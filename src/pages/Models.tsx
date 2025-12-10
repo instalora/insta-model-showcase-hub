@@ -39,7 +39,7 @@ const Models: React.FC = () => {
       const items = Array.isArray(data.items) ? (data.items as ApiModel[]) : [];
       const mappedModels: Model[] = items.map((item) => ({
         id: item.id,
-        slug: item.slug,
+        slug: item.slug || item.id,
         name: item.name || item.title,
         title: item.title,
         categoryName: item.category_name,
