@@ -6,9 +6,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 interface ApiModel {
   id: string;
-  cover_image_url: string;
+  list_image_url: string;
   slug: string;
-  name: string;
+  title: string;
   category_name: string;
   rating: number;
   audience_count: number;
@@ -38,9 +38,9 @@ const Models: React.FC = () => {
       const mappedModels: Model[] = items.map((item) => ({
         id: item.id,
         slug: item.slug,
-        name: item.name,
+        name: item.title,
         categoryName: item.category_name,
-        coverImageUrl: item.cover_image_url,
+        coverImageUrl: item.list_image_url,
         rating: item.rating,
         audienceCount: item.audience_count,
         likeCount: item.like_count,
