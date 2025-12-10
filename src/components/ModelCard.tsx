@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Lock, MessageCircle, UserRound } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Heart, Star, UserRound } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'react-router-dom';
 
-interface Model {
+export interface Model {
   id: string;
+  slug: string;
   name: string;
-  niche: string;
-  subtitle: string;
-  image: string;
-  likes: number;
-  brandUses: number;
-  comments: number;
+  categoryName: string;
+  coverImageUrl: string;
+  rating: number;
+  audienceCount: number;
+  likeCount: number;
 }
 
 interface ModelCardProps {
@@ -61,9 +61,11 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
     Tech: 'from-cyan-500 to-blue-600',
     Travel: 'from-amber-500 to-orange-600',
     Food: 'from-rose-500 to-red-500',
+    Editorial: 'from-indigo-500 to-purple-600',
+    Portraits: 'from-sky-500 to-cyan-600',
   };
 
-  const gradientClass = nicheColors[model.niche] || 'from-brand-pink to-brand-purple';
+  const gradientClass = nicheColors[model.categoryName] || 'from-brand-pink to-brand-purple';
 
   return (
     <div
@@ -74,17 +76,16 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <Link
-        to={`/model/${model.id}`}
+        to={`/model/${model.slug || model.id}`}
         className="group block h-full"
       >
         <div className="relative overflow-hidden rounded-xl bg-card shadow-md shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-pink focus-visible:ring-offset-2 focus-visible:ring-offset-background">
-          {/* Image Container */}
           <div className="relative aspect-[3/4] overflow-hidden">
             {!imageLoaded && (
               <Skeleton className="absolute inset-0 rounded-none" />
             )}
             <img
-              src={model.image}
+              src={model.coverImageUrl}
               alt={model.name}
               className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
@@ -92,39 +93,35 @@ const ModelCard: React.FC<ModelCardProps> = ({ model, index }) => {
               onLoad={() => setImageLoaded(true)}
             />
 
-            {/* Niche Tag */}
             <div className="absolute top-4 left-4">
               <span className={`px-3 py-1.5 text-xs font-semibold text-white rounded-full bg-gradient-to-r ${gradientClass}`}>
-                {model.niche}
+                {model.categoryName}
               </span>
             </div>
 
-            {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
 
-          {/* Content */}
           <div className="p-5">
             <h3 className="text-xl font-bold font-display text-foreground mb-1">
               {model.name}
             </h3>
             <p className="text-sm text-muted-foreground mb-4">
-              {model.subtitle}
+              Engages {formatNumber(model.audienceCount)}+ followers across campaigns.
             </p>
 
-              {/* Stats */}
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1.5">
-                  <UserRound className="w-4 h-4 text-brand-purple" />
-                  <span>{formatNumber(model.likes)}</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                <Lock className="w-4 h-4 text-brand-purple" />
-                <span>{model.brandUses}</span>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1.5">
+                <UserRound className="w-4 h-4 text-brand-purple" />
+                <span>{formatNumber(model.audienceCount)}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <MessageCircle className="w-4 h-4 text-muted-foreground" />
-                <span>{formatNumber(model.comments)}</span>
+                <Heart className="w-4 h-4 text-brand-purple" />
+                <span>{formatNumber(model.likeCount)}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Star className="w-4 h-4 text-brand-purple" />
+                <span>{model.rating.toFixed(1)}</span>
               </div>
             </div>
           </div>
