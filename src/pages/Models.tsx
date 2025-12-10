@@ -1,199 +1,68 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ModelCard from '@/components/ModelCard';
+import ModelCard, { Model } from '@/components/ModelCard';
 import { Skeleton } from '@/components/ui/skeleton';
 
-interface Model {
+interface ApiModel {
   id: string;
+  cover_image_url: string;
+  slug: string;
   name: string;
-  niche: string;
-  subtitle: string;
-  image: string;
-  likes: number;
-  brandUses: number;
-  comments: number;
+  category_name: string;
+  rating: number;
+  audience_count: number;
+  like_count: number;
 }
 
-const initialModels: Model[] = [
-  {
-    id: 'stasy',
-    name: 'Stasy',
-    niche: 'Fashion',
-    subtitle: 'Modern resort-inspired lifestyle content',
-    image: '/wairk1/1.jpg',
-    likes: 9400,
-    brandUses: 84,
-    comments: 610,
-  },
-  {
-    id: 'amara',
-    name: 'Amara',
-    niche: 'Fitness',
-    subtitle: 'Athletic elegance meets lifestyle storytelling',
-    image: '/amara/11.jpg',
-    likes: 98500,
-    brandUses: 68,
-    comments: 1300,
-  },
-  {
-    id: 'camila',
-    name: 'Camilla Gimenez',
-    niche: 'AI & Tech',
-    subtitle:
-      'Content creator and digital marketing expert',
-    image: '/camila/1.jpg',
-    likes: 1700000,
-    brandUses: 125,
-    comments: 18400,
-  },
-  {
-    id: 'emma',
-    name: 'Emma',
-    niche: 'Fashion',
-    subtitle: 'Minimalist streetwear & editorial looks',
-    image: '/wairk2/1.jpg',
-    likes: 125000,
-    brandUses: 102,
-    comments: 2400,
-  },
-  {
-    id: '1',
-    name: 'Sophia Chen',
-    niche: 'Fashion',
-    subtitle: 'High-end fashion & luxury brands',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=800&fit=crop',
-    likes: 5200,
-    brandUses: 48,
-    comments: 320,
-  },
-  {
-    id: '2',
-    name: 'Marcus Rivera',
-    niche: 'Commercial',
-    subtitle: 'Corporate & business visuals',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop',
-    likes: 3800,
-    brandUses: 35,
-    comments: 210,
-  },
-  {
-    id: '3',
-    name: 'Luna Park',
-    niche: 'Lifestyle',
-    subtitle: 'Wellness & everyday moments',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop',
-    likes: 4500,
-    brandUses: 52,
-    comments: 280,
-  },
-  {
-    id: '4',
-    name: 'James Mitchell',
-    niche: 'Fitness',
-    subtitle: 'Sports & athletic wear',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop',
-    likes: 6100,
-    brandUses: 61,
-    comments: 445,
-  },
-  {
-    id: '5',
-    name: 'Emma Laurent',
-    niche: 'Beauty',
-    subtitle: 'Cosmetics & skincare',
-    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop',
-    likes: 7200,
-    brandUses: 78,
-    comments: 520,
-  },
-  {
-    id: '6',
-    name: 'Alex Thompson',
-    niche: 'Tech',
-    subtitle: 'Tech products & gadgets',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop',
-    likes: 2900,
-    brandUses: 29,
-    comments: 175,
-  },
-];
-
-const moreModels: Model[] = [
-  {
-    id: '7',
-    name: 'Mia Anderson',
-    niche: 'Travel',
-    subtitle: 'Adventure & destination content',
-    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop',
-    likes: 4100,
-    brandUses: 38,
-    comments: 290,
-  },
-  {
-    id: '8',
-    name: 'David Kim',
-    niche: 'Food',
-    subtitle: 'Culinary & beverage brands',
-    image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=600&h=800&fit=crop',
-    likes: 3200,
-    brandUses: 42,
-    comments: 198,
-  },
-  {
-    id: '9',
-    name: 'Isabella Martinez',
-    niche: 'Fashion',
-    subtitle: 'Streetwear & urban style',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=800&fit=crop',
-    likes: 5800,
-    brandUses: 55,
-    comments: 380,
-  },
-];
+const MODELS_ENDPOINT = 'https://api-3mtz.onrender.com/v1.0/models/public';
 
 const Models: React.FC = () => {
-  const [models, setModels] = useState<Model[]>(initialModels);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
+  const [models, setModels] = useState<Model[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const loadMoreModels = useCallback(() => {
-    if (loading || !hasMore) return;
-    
+  const fetchModels = useCallback(async () => {
     setLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      if (page === 1) {
-        setModels(prev => [...prev, ...moreModels]);
-        setPage(2);
-      } else {
-        setHasMore(false);
+    setError(null);
+
+    try {
+      const response = await fetch(MODELS_ENDPOINT);
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch models: ${response.status}`);
       }
+
+      const data = await response.json();
+      const items = Array.isArray(data.items) ? (data.items as ApiModel[]) : [];
+      const mappedModels: Model[] = items.map((item) => ({
+        id: item.id,
+        slug: item.slug,
+        name: item.name,
+        categoryName: item.category_name,
+        coverImageUrl: item.cover_image_url,
+        rating: item.rating,
+        audienceCount: item.audience_count,
+        likeCount: item.like_count,
+      }));
+
+      setModels(mappedModels);
+    } catch (err) {
+      console.error(err);
+      setError('Unable to load models right now. Please try again later.');
+    } finally {
       setLoading(false);
-    }, 800);
-  }, [loading, hasMore, page]);
+    }
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - 500
-      ) {
-        loadMoreModels();
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [loadMoreModels]);
+    fetchModels();
+  }, [fetchModels]);
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
-      {/* Hero Header */}
+
       <section className="pt-24 pb-12 px-6 md:px-10">
         <div className="max-w-[1200px] mx-auto text-center animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold font-display text-foreground mb-4">
@@ -205,9 +74,14 @@ const Models: React.FC = () => {
         </div>
       </section>
 
-      {/* Models Grid */}
       <section className="px-6 md:px-10 pb-20">
         <div className="max-w-[1200px] mx-auto">
+          {error && (
+            <div className="rounded-lg border border-destructive/40 bg-destructive/10 text-destructive p-4 mb-6">
+              {error}
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
             {models.map((model, index) => (
               <ModelCard
@@ -216,8 +90,7 @@ const Models: React.FC = () => {
                 index={index}
               />
             ))}
-            
-            {/* Loading Skeletons */}
+
             {loading && (
               <>
                 {[1, 2, 3].map((i) => (
@@ -230,10 +103,10 @@ const Models: React.FC = () => {
               </>
             )}
           </div>
-          
-          {!hasMore && (
+
+          {!loading && models.length === 0 && !error && (
             <p className="text-center text-muted-foreground mt-12">
-              You've seen all available models
+              No models available right now. Please check back soon.
             </p>
           )}
         </div>

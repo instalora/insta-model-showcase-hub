@@ -10,7 +10,7 @@ import Counter from '@/components/Counter';
 import SocialEngagement from '@/components/SocialEngagement';
 import GenerationModal from '@/components/GenerationModal';
 import PurchaseModal from '@/components/PurchaseModal';
-import ModelCard from '@/components/ModelCard';
+import ModelCard, { Model as ShowcaseModel } from '@/components/ModelCard';
 import { toast } from "@/components/ui/use-toast";
 
 // Mock data for different models
@@ -185,13 +185,14 @@ const modelsData: Record<string, {
 
 const ModelProfile = () => {
   const { id } = useParams<{ id: string }>();
+  const modelKey = id === 'camilla' ? 'camila' : id;
   const [isGenerationModalOpen, setIsGenerationModalOpen] = useState(false);
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [freeGenerationsLeft, setFreeGenerationsLeft] = useState(2);
   const [maxFreeGenerations] = useState(2);
   const [isPremiumUser, setIsPremiumUser] = useState(false);
 
-  const modelData = modelsData[id || '1'] || modelsData['1'];
+  const modelData = modelsData[modelKey || '1'] || modelsData['1'];
 
   const handleGenerateClick = () => {
     if (freeGenerationsLeft > 0 || isPremiumUser) {
@@ -335,22 +336,26 @@ const ModelProfile = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
               {Object.values(modelsData)
                 .filter(m => m.id !== modelData.id)
-                .map((model, index) => (
-                  <ModelCard 
-                    key={model.id}
-                    model={{
-                      id: model.id,
-                      name: model.name,
-                      niche: model.niche.split(' ')[0],
-                      subtitle: model.niche,
-                      image: model.avatar,
-                      likes: model.social.likes,
-                      brandUses: model.stats.brandCollaborations,
-                      comments: model.social.comments,
-                    }}
-                    index={index}
-                  />
-                ))}
+                .map((model, index) => {
+                  const formattedModel: ShowcaseModel = {
+                    id: model.id,
+                    slug: model.id,
+                    name: model.name,
+                    categoryName: model.niche.split(' ')[0],
+                    coverImageUrl: model.avatar || model.heroImage,
+                    rating: 4.8,
+                    audienceCount: model.social.likes,
+                    likeCount: model.social.comments,
+                  };
+
+                  return (
+                    <ModelCard
+                      key={model.id}
+                      model={formattedModel}
+                      index={index}
+                    />
+                  );
+                })}
             </div>
           </div>
 
