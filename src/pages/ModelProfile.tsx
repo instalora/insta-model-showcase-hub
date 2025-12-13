@@ -186,7 +186,7 @@ const ModelProfile = () => {
       setError(null);
 
       try {
-        const response = await fetch(`https://api-3mtz.onrender.com/v1.0/models/public/${modelKey}`, {
+        const response = await fetch(`https://api.epictwin.co/v1.0/models/public/${modelKey}`, {
           signal: controller.signal,
         });
 

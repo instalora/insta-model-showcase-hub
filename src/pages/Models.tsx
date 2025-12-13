@@ -19,7 +19,7 @@ interface ApiModel {
   like_count: number;
 }
 
-const MODELS_ENDPOINT = 'https://api-3mtz.onrender.com/v1.0/models/public';
+const MODELS_ENDPOINT = 'https://api.epictwin.co/v1.0/models/public';
 
 const Models: React.FC = () => {
   const [models, setModels] = useState<Model[]>([]);
@@ -78,7 +78,7 @@ const Models: React.FC = () => {
         if (getCachedModel(cacheKey)) continue;
 
         try {
-          const response = await fetch(`https://api-3mtz.onrender.com/v1.0/models/public/${cacheKey}`, {
+          const response = await fetch(`https://api.epictwin.co/v1.0/models/public/${cacheKey}`, {
             signal: controller.signal,
           });
 
