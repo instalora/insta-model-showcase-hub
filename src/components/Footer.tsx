@@ -24,8 +24,19 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li><a href="/models" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Models</a></li>
               <li><a href="/pricing" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Pricing</a></li>
+              <li><a href="/enterprise" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">For Brands</a></li>
               {/* <li><a href="/enterprise" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Enterprise</a></li>
               <li><a href="/partners" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Partners</a></li> */}
+            </ul>
+          </div>
+
+          <div className="md:col-span-1 md:text-left text-right">
+            <h3 className="font-display font-semibold mb-4 text-sm">Case Studies</h3>
+            <ul className="space-y-3">
+              <li><a href="/case-study/promod" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Promod case</a></li>
+              <li><a href="/case-study/iman-cosmetics" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Iman cosmetics case</a></li>
+              <li><a href="/case-study/pirelli" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Pirelli case</a></li>
+              <li><a href="/case-study/hermes" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Hermes case</a></li>
             </ul>
           </div>
 
