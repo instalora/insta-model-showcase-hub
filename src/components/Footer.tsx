@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           <div className="col-span-2 md:col-span-1">
             <a href="/" className="flex items-center">
               <span className="text-xl font-bold font-display bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Instalora
+                epicTwin
               </span>
             </a>
             <p className="mt-4 text-sm text-instalora-600 dark:text-instalora-300">
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-instalora-200 dark:border-instalora-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm text-instalora-600 dark:text-instalora-400">
-            © {new Date().getFullYear()} Instalora. All rights reserved.
+            © {new Date().getFullYear()} epicTwin. All rights reserved.
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="/terms" className="text-xs text-instalora-600 hover:text-primary dark:text-instalora-400">Terms</a>
