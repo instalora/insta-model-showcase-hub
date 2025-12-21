@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const BecomeModel = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -15,14 +14,72 @@ const BecomeModel = () => {
     instagram: "",
     about: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Application Submitted!",
-      description: "We'll review your application and get back to you soon.",
-    });
-    navigate("/");
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://api.epictwin.co/models/requests", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          account: formData.instagram,
+          about: formData.about,
+        }),
+      });
+
+      if (response.status === 400) {
+        let message = "Please check your details and try again.";
+
+        try {
+          const errorBody = await response.json();
+          if (errorBody?.detail) {
+            message = errorBody.detail;
+          }
+        } catch (parseError) {
+          console.error("Failed to parse error response", parseError);
+        }
+
+        toast({
+          title: "Submission failed",
+          description: message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      toast({
+        title: "Application submitted!",
+        description: "We'll review your application and get back to you soon.",
+      });
+
+      setFormData({
+        fullName: "",
+        email: "",
+        instagram: "",
+        about: "",
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Unable to submit your application. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -71,11 +128,12 @@ const BecomeModel = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Instagram Handle</label>
+                <label className="block text-sm font-medium mb-2">Instagram Handle (Account)</label>
                 <Input
-                  placeholder="@yourusername"
+                  placeholder="Instagram username for your account (e.g. yourusername)"
                   value={formData.instagram}
                   onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                  required
                 />
               </div>
 
@@ -92,8 +150,9 @@ const BecomeModel = () => {
               <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-[#E456F4] to-[#A855F7] hover:opacity-90 text-white py-6 text-lg rounded-xl"
+                disabled={isSubmitting}
               >
-                Submit Application
+                {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>
             </form>
           </div>
