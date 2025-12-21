@@ -275,7 +275,7 @@ const CaseStudyHermes = () => {
               Ready to Transform Your Content?
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8">
-              Join hundreds of brands already creating stunning visuals with Instalora AI models.
+              Join hundreds of brands already creating stunning visuals with epicTwin AI models.
             </p>
             <Link to="/brands">
               <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
