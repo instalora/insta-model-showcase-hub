@@ -187,7 +187,7 @@ const CaseStudyPromod: React.FC = () => {
             <div className="order-2 md:order-1">
               <img
                 src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=700&fit=crop"
-                alt="Instalora AI solution"
+                alt="epicTwin AI solution"
                 className="rounded-2xl w-full"
               />
             </div>
@@ -230,7 +230,7 @@ const CaseStudyPromod: React.FC = () => {
             {[ 
               { day: "Hour 1", title: "Model Discovery & Selection", description: "Promod browsed our AI model catalog and selected 3 models that perfectly matched their brand's aesthetic — diverse, approachable, and fashion-forward." },
               { day: "Hour 2", title: "Collection Upload & Brief", description: "The team uploaded their winter collection pieces and provided style direction, mood boards, and specific shot requirements." },
-              { day: "Hour 3-4", title: "AI Content Generation", description: "Instalora generated 150+ unique images featuring the selected AI models wearing the new collection in various lifestyle settings." },
+              { day: "Hour 3-4", title: "AI Content Generation", description: "epicTwin generated 150+ unique images featuring the selected AI models wearing the new collection in various lifestyle settings." },
               { day: "Hour 5", title: "Review & Delivery", description: "Promod reviewed the generated content, requested minor adjustments, and received final campaign-ready assets." },
             ].map((step, index) => (
               <div key={index} className="flex gap-6 items-start">
@@ -272,7 +272,7 @@ const CaseStudyPromod: React.FC = () => {
             <span className="text-2xl font-bold text-primary">P</span>
           </div>
           <blockquote className="text-xl md:text-2xl text-foreground font-medium leading-relaxed mb-8">
-            "Instalora completely transformed how we approach content creation. We found the perfect model for our brand identity and generated a full campaign's worth of authentic, beautiful content in less than a week. The cost savings are incredible, but the quality is what truly impressed us."
+            "epicTwin completely transformed how we approach content creation. We found the perfect model for our brand identity and generated a full campaign's worth of authentic, beautiful content in less than a week. The cost savings are incredible, but the quality is what truly impressed us."
           </blockquote>
           <div>
             <p className="font-semibold text-foreground">Marie Dubois</p>
@@ -289,7 +289,7 @@ const CaseStudyPromod: React.FC = () => {
               Ready to Transform Your Content?
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8">
-              Join hundreds of brands already creating stunning visuals with Instalora AI models.
+              Join hundreds of brands already creating stunning visuals with epicTwin AI models.
             </p>
             <Link to="/brands">
               <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
