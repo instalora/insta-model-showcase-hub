@@ -91,7 +91,7 @@ const CaseStudies: React.FC = () => {
             Our work
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-            Explore what you can do with Instalora
+            Explore what you can do with epicTwin
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">
             See how leading brands are using AI-generated content to transform their marketing and drive results.
@@ -118,7 +118,7 @@ const CaseStudies: React.FC = () => {
               Ready to create your success story?
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8">
-              Join hundreds of brands already using Instalora to revolutionize their content creation.
+              Join hundreds of brands already using epicTwin to revolutionize their content creation.
             </p>
             <Link to="/brands">
               <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
