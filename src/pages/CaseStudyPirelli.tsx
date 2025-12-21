@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import ImageGallery from "@/components/ImageGallery";
+import { START_FREE_TRIAL_URL } from "@/constants/links";
 
 const CaseStudyPirelli = () => {
   const galleryImages = [
@@ -277,11 +278,11 @@ const CaseStudyPirelli = () => {
             <p className="text-white/80 max-w-xl mx-auto mb-8">
               Join hundreds of brands already creating stunning visuals with epicTwin AI models.
             </p>
-            <Link to="/brands">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+            <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+              <a href={START_FREE_TRIAL_URL}>
                 Start Free Trial
-              </Button>
-            </Link>
+              </a>
+            </Button>
           </div>
         </div>
       </section>

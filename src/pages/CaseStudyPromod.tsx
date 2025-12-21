@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle, TrendingUp, Clock, Users, Sparkles } from "luci
 import { Link } from "react-router-dom";
 import ImageGallery from "@/components/ImageGallery";
 import { Button } from "@/components/ui/button";
+import { START_FREE_TRIAL_URL } from "@/constants/links";
 
 const CaseStudyPromod: React.FC = () => {
   const metrics = [
@@ -291,11 +292,11 @@ const CaseStudyPromod: React.FC = () => {
             <p className="text-white/80 max-w-xl mx-auto mb-8">
               Join hundreds of brands already creating stunning visuals with epicTwin AI models.
             </p>
-            <Link to="/brands">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+            <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+              <a href={START_FREE_TRIAL_URL}>
                 Start Free Trial
-              </Button>
-            </Link>
+              </a>
+            </Button>
           </div>
         </div>
       </section>
