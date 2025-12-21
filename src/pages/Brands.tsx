@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Check, Zap, Target, TrendingUp, Users, ImageIcon } from "lucide-react";
+import { START_FREE_TRIAL_URL } from "@/constants/links";
 
 const Brands = () => {
   const benefits = [
@@ -219,8 +219,10 @@ const Brands = () => {
             <p className="text-white/80 max-w-xl mx-auto mb-8">
               Join hundreds of brands already creating stunning visuals with epicTwin AI models.
             </p>
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-              Start Free Trial
+            <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+              <a href={START_FREE_TRIAL_URL}>
+                Start Free Trial
+              </a>
             </Button>
           </div>
         </div>
