@@ -71,7 +71,7 @@ const Brands = () => {
       <section className="py-16 px-6 md:px-10 bg-muted/30">
         <div className="max-w-[1200px] mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Why Brands Choose Instalora
+            Why Brands Choose epicTwin
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
@@ -217,7 +217,7 @@ const Brands = () => {
               Ready to Transform Your Content?
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8">
-              Join hundreds of brands already creating stunning visuals with Instalora AI models.
+              Join hundreds of brands already creating stunning visuals with epicTwin AI models.
             </p>
             <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
               Start Free Trial
