@@ -151,7 +151,7 @@ const Models: React.FC = () => {
           )}
 
           <div className="mt-16">
-            <div className="bg-muted rounded-3xl px-8 md:px-12 py-10 flex flex-col md:flex-row items-center gap-8">
+            <div className="bg-muted rounded-3xl px-8 md:px-12 flex flex-col md:flex-row items-center gap-8">
               <div className="flex-1 text-center md:text-left">
                 <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
                   Want to be an<br />AI model?
