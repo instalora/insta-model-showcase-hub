@@ -134,7 +134,7 @@ const About = () => {
                 We believe every creator deserves the opportunity to work with amazing brands, and every brand deserves access to diverse, authentic content that resonates with their audience.
               </p>
               <p className="text-lg text-muted-foreground">
-                Instalora bridges this gap by leveraging AI to help creators scale their impact and brands to find the perfect match for their vision.
+                epicTwin bridges this gap by leveraging AI to help creators scale their impact and brands to find the perfect match for their vision.
               </p>
             </div>
           </div>
@@ -148,7 +148,7 @@ const About = () => {
             Ready to Transform Your Content?
           </h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10">
-            Join thousands of creators and brands already using Instalora to create stunning, authentic content.
+            Join thousands of creators and brands already using epicTwin to create stunning, authentic content.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="rounded-full px-8">
