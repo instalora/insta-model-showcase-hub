@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li><a href="/models" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Models</a></li>
               <li><a href="/pricing" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Pricing</a></li>
-              <li><a href="/enterprise" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">For Brands</a></li>
+              <li><a href="/brands" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">For Brands</a></li>
               {/* <li><a href="/enterprise" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Enterprise</a></li>
               <li><a href="/partners" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Partners</a></li> */}
             </ul>
