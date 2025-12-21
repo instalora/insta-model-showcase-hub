@@ -24,12 +24,12 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li><a href="/models" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Models</a></li>
               <li><a href="/pricing" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Pricing</a></li>
-              <li><a href="/enterprise" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Enterprise</a></li>
-              <li><a href="/partners" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Partners</a></li>
+              {/* <li><a href="/enterprise" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Enterprise</a></li>
+              <li><a href="/partners" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Partners</a></li> */}
             </ul>
           </div>
 
-          <div className="md:col-span-1 md:text-left text-right">
+          {/* <div className="md:col-span-1 md:text-left text-right">
             <h3 className="font-display font-semibold mb-4 text-sm">Resources</h3>
             <ul className="space-y-3">
               <li><a href="/blog" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Blog</a></li>
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
               <li><a href="/support" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Help Center</a></li>
               <li><a href="/community" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Community</a></li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="col-span-2 md:col-span-1">
             <h3 className="font-display font-semibold mb-4 text-sm">Stay updated</h3>
