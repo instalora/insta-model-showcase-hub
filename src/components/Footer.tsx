@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
             <h3 className="font-display font-semibold mb-4 text-sm">Case Studies</h3>
             <ul className="space-y-3">
               <li><a href="/case-study/promod" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Promod case</a></li>
-              <li><a href="/case-study/iman-cosmetics" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Iman cosmetics case</a></li>
+              <li><a href="/case-study/iman-cosmetics" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">IMAN Cosmetics case</a></li>
               <li><a href="/case-study/pirelli" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Pirelli case</a></li>
               <li><a href="/case-study/hermes" className="text-instalora-600 hover:text-primary text-sm dark:text-instalora-300">Hermes case</a></li>
             </ul>
