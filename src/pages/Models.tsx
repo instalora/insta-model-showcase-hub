@@ -7,19 +7,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { ApiModel } from '@/types/api';
 import { getCachedModel, setCachedModel } from '@/utils/modelCache';
 
-interface ApiModel {
-  id: string;
-  list_image_url: string;
-  slug: string;
-  image: string;
-  name?: string;
-  title: string;
-  category_name: string;
-  rating: number;
-  audience_count: number;
-  like_count: number;
-}
-
 const MODELS_ENDPOINT = 'https://api.epictwin.co/v1.0/models/public';
 
 const Models: React.FC = () => {
