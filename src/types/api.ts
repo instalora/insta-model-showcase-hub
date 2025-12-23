@@ -36,10 +36,14 @@ export type ApiModel = {
   id?: string;
   slug?: string;
   name?: string;
+  title?: string;
   subtitle?: string;
+  category_name?: string;
   genres?: string[];
   description?: string;
+  image?: string;
   cover_image_url?: string;
+  list_image_url?: string;
   avatar_url?: string;
   assets?: ApiAsset[];
   rating?: number;
