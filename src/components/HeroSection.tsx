@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
+import { type TrackEventFunction } from "@/hooks/use-analytics";
 
 interface HeroSectionProps {
   name: string;
@@ -9,6 +10,7 @@ interface HeroSectionProps {
   onGenerateClick: () => void;
   freeGenerationsLeft: number;
   maxFreeGenerations: number;
+  track?: TrackEventFunction;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
@@ -17,10 +19,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   heroImageSrc, 
   onGenerateClick, 
   freeGenerationsLeft,
-  maxFreeGenerations
+  maxFreeGenerations,
+  track,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const handleGenerateClick = () => {
+    track?.("cta_click", {
+      cta_label: "Generate Image",
+      destination: "generation_modal",
+    });
+    onGenerateClick();
+  };
 
   useEffect(() => {
     // Animation on load
@@ -72,7 +82,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </p>
           
           <Button
-            onClick={onGenerateClick}
+            onClick={handleGenerateClick}
             size="lg"
             className="bg-white text-instalora-900 hover:bg-instalora-100 font-medium py-2 px-8 rounded-lg transition-all duration-200 ease-in-out shadow-lg hover:shadow-xl"
           >
@@ -103,7 +113,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               )}
             </div>
             <Button 
-              onClick={onGenerateClick}
+              onClick={() => {
+                track?.("cta_click", {
+                  cta_label: "Generate Now",
+                  destination: "generation_modal",
+                });
+                onGenerateClick();
+              }}
               className="bg-white text-instalora-900 hover:bg-instalora-100"
             >
               Generate Now

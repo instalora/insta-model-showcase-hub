@@ -6,6 +6,7 @@ import ModelCard, { Model } from '@/components/ModelCard';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ApiModel } from '@/types/api';
 import { getCachedModel, setCachedModel } from '@/utils/modelCache';
+import { useAnalytics } from "@/hooks/use-analytics";
 
 const MODELS_ENDPOINT = 'https://api.epictwin.co/v1.0/models/public';
 
@@ -13,6 +14,7 @@ const Models: React.FC = () => {
   const [models, setModels] = useState<Model[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const { trackEvent } = useAnalytics();
 
   const fetchModels = useCallback(async () => {
     setLoading(true);
@@ -146,6 +148,12 @@ const Models: React.FC = () => {
                 <Link
                   to="/become-model"
                   className="inline-block bg-foreground text-background px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
+                  onClick={() =>
+                    trackEvent("cta_click", {
+                      cta_label: "Become a model",
+                      destination: "/become-model",
+                    })
+                  }
                 >
                   Become a model
                 </Link>

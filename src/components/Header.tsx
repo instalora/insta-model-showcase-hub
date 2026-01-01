@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const isModelsActive = pathname.startsWith('/models') || pathname.startsWith('/model/');
+  const { trackEvent } = useAnalytics();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +29,16 @@ const Header: React.FC = () => {
       className={`${isScrolled ? 'sticky-header' : 'py-6'} w-full py-4 px-4 md:px-8 transition-all duration-300 ${isMobileMenuOpen ? 'bg-white dark:bg-instalora-950 !bg-opacity-100' : ''}`}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <a href="/" className="flex items-center">
+        <a
+          href="/"
+          className="flex items-center"
+          onClick={() =>
+            trackEvent("nav_click", {
+              cta_label: "Logo",
+              destination: "/",
+            })
+          }
+        >
           <span className="text-xl font-bold font-display bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             epicTwin
           </span>
@@ -37,6 +48,12 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <NavLink
             to="/"
+            onClick={() =>
+              trackEvent("nav_click", {
+                cta_label: "Discover",
+                destination: "/",
+              })
+            }
             className={({ isActive }) =>
               `text-sm font-medium transition-colors ${
                 isActive ? "text-primary" : "hover:text-primary"
@@ -47,6 +64,12 @@ const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/models"
+            onClick={() =>
+              trackEvent("nav_click", {
+                cta_label: "Models",
+                destination: "/models",
+              })
+            }
             className={() =>
               `text-sm font-medium transition-colors ${
                 isModelsActive ? "text-primary" : "hover:text-primary"
@@ -57,6 +80,12 @@ const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/brands"
+            onClick={() =>
+              trackEvent("nav_click", {
+                cta_label: "For Brands",
+                destination: "/brands",
+              })
+            }
             className={({ isActive }) =>
               `text-sm font-medium transition-colors ${
                 isActive ? "text-primary" : "hover:text-primary"
@@ -67,6 +96,12 @@ const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/case-studies"
+            onClick={() =>
+              trackEvent("nav_click", {
+                cta_label: "Case Studies",
+                destination: "/case-studies",
+              })
+            }
             className={({ isActive }) =>
               `text-sm font-medium transition-colors ${
                 isActive ? "text-primary" : "hover:text-primary"
@@ -77,6 +112,12 @@ const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/about"
+            onClick={() =>
+              trackEvent("nav_click", {
+                cta_label: "About",
+                destination: "/about",
+              })
+            }
             className={({ isActive }) =>
               `text-sm font-medium transition-colors ${
                 isActive ? "text-primary" : "hover:text-primary"
@@ -88,10 +129,27 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="outline" size="sm">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              trackEvent("auth_click", {
+                cta_label: "Log in",
+                destination: "/login",
+              })
+            }
+          >
             Log in
           </Button>
-          <Button size="sm">
+          <Button
+            size="sm"
+            onClick={() =>
+              trackEvent("auth_click", {
+                cta_label: "Sign up",
+                destination: "/signup",
+              })
+            }
+          >
             Sign up
           </Button>
         </div>
@@ -140,7 +198,13 @@ const Header: React.FC = () => {
                   isActive ? "text-primary" : "hover:text-primary"
                 }`
               }
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                trackEvent("nav_click", {
+                  cta_label: "Discover",
+                  destination: "/",
+                });
+                setIsMobileMenuOpen(false);
+              }}
             >
               Discover
             </NavLink>
@@ -151,7 +215,13 @@ const Header: React.FC = () => {
                   isModelsActive ? "text-primary" : "hover:text-primary"
                 }`
               }
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                trackEvent("nav_click", {
+                  cta_label: "Models",
+                  destination: "/models",
+                });
+                setIsMobileMenuOpen(false);
+              }}
             >
               Models
             </NavLink>
@@ -162,7 +232,13 @@ const Header: React.FC = () => {
                   isActive ? "text-primary" : "hover:text-primary"
                 }`
               }
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                trackEvent("nav_click", {
+                  cta_label: "For Brands",
+                  destination: "/brands",
+                });
+                setIsMobileMenuOpen(false);
+              }}
             >
               For Brands
             </NavLink>
@@ -173,7 +249,13 @@ const Header: React.FC = () => {
                   isActive ? "text-primary" : "hover:text-primary"
                 }`
               }
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                trackEvent("nav_click", {
+                  cta_label: "Case Studies",
+                  destination: "/case-studies",
+                });
+                setIsMobileMenuOpen(false);
+              }}
             >
               Case Studies
             </NavLink>
@@ -184,13 +266,40 @@ const Header: React.FC = () => {
                   isActive ? "text-primary" : "hover:text-primary"
                 }`
               }
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                trackEvent("nav_click", {
+                  cta_label: "About",
+                  destination: "/about",
+                });
+                setIsMobileMenuOpen(false);
+              }}
             >
               About
             </NavLink>
             <div className="flex flex-col space-y-4 mt-8 w-full px-8">
-              <Button variant="outline" className="w-full">Log in</Button>
-              <Button className="w-full">Sign up</Button>
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() =>
+                  trackEvent("auth_click", {
+                    cta_label: "Log in",
+                    destination: "/login",
+                  })
+                }
+              >
+                Log in
+              </Button>
+              <Button
+                className="w-full"
+                onClick={() =>
+                  trackEvent("auth_click", {
+                    cta_label: "Sign up",
+                    destination: "/signup",
+                  })
+                }
+              >
+                Sign up
+              </Button>
             </div>
           </nav>
         </div>

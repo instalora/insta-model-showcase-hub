@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { type TrackEventFunction } from "@/hooks/use-analytics";
 
 interface GenerationModalProps {
   open: boolean;
@@ -13,6 +14,8 @@ interface GenerationModalProps {
   modelName: string;
   freeGenerationsLeft: number;
   onGenerate: () => void;
+  track?: TrackEventFunction;
+  modelId?: string;
 }
 
 const GenerationModal: React.FC<GenerationModalProps> = ({ 
@@ -20,7 +23,9 @@ const GenerationModal: React.FC<GenerationModalProps> = ({
   onOpenChange, 
   modelName,
   freeGenerationsLeft,
-  onGenerate
+  onGenerate,
+  track,
+  modelId,
 }) => {
   const [prompt, setPrompt] = useState('');
   const [style, setStyle] = useState('natural');
@@ -30,6 +35,14 @@ const GenerationModal: React.FC<GenerationModalProps> = ({
     if (!prompt) return;
     
     setGenerating(true);
+
+    track?.("generation_modal_generate", {
+      cta_label: "Generate Image",
+      destination: "generation_flow",
+      model_id: modelId,
+      model_name: modelName,
+      prompt_length: prompt.length,
+    });
     
     // Simulate generation process
     setTimeout(() => {
