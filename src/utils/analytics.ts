@@ -1,5 +1,6 @@
 declare global {
   interface Window {
+    dataLayer?: unknown[]
     gtag?: (...args: unknown[]) => void
   }
 }
@@ -10,12 +11,24 @@ export type AnalyticsParams = {
   section?: string
   cta_label?: string
   destination?: string
+  page_location?: string
+  page_referrer?: string
   [key: string]: unknown
 }
 
 const getGtag = () => {
   if (typeof window === "undefined") return undefined
-  if (typeof window.gtag !== "function") return undefined
+
+  if (!Array.isArray(window.dataLayer)) {
+    window.dataLayer = []
+  }
+
+  if (typeof window.gtag !== "function") {
+    window.gtag = (...args: unknown[]) => {
+      window.dataLayer?.push(args)
+    }
+  }
+
   return window.gtag
 }
 
@@ -25,6 +38,12 @@ const getPagePath = () =>
 const getPageTitle = () =>
   typeof document !== "undefined" ? document.title : undefined
 
+const getPageLocation = () =>
+  typeof window !== "undefined" ? window.location.href : undefined
+
+const getPageReferrer = () =>
+  typeof document !== "undefined" ? document.referrer : undefined
+
 export const trackEvent = (
   name: string,
   params: AnalyticsParams = {}
@@ -32,7 +51,13 @@ export const trackEvent = (
   const gtag = getGtag()
   if (!gtag) return
 
-  gtag("event", name, params)
+  gtag("event", name, {
+    ...params,
+    page_location:
+      (params.page_location as string | undefined) ?? getPageLocation(),
+    page_referrer:
+      (params.page_referrer as string | undefined) ?? getPageReferrer(),
+  })
 }
 
 export const trackPageView = (
@@ -44,8 +69,12 @@ export const trackPageView = (
   if (!gtag) return
 
   gtag("event", "page_view", {
-    page_path: pagePath ?? getPagePath(),
-    page_title: pageTitle ?? getPageTitle(),
     ...params,
+    page_path: pagePath ?? (params.page_path as string | undefined) ?? getPagePath(),
+    page_title: pageTitle ?? (params.page_title as string | undefined) ?? getPageTitle(),
+    page_location:
+      (params.page_location as string | undefined) ?? getPageLocation(),
+    page_referrer:
+      (params.page_referrer as string | undefined) ?? getPageReferrer(),
   })
 }
