@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { type TrackEventFunction } from "@/hooks/use-analytics";
 
 interface Package {
   id: string;
@@ -17,6 +18,9 @@ interface PurchaseModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onPurchaseComplete: () => void;
+  track?: TrackEventFunction;
+  modelId?: string;
+  modelName?: string;
 }
 
 const packages: Package[] = [
@@ -43,18 +47,39 @@ const packages: Package[] = [
   }
 ];
 
-const PurchaseModal: React.FC<PurchaseModalProps> = ({ open, onOpenChange, onPurchaseComplete }) => {
+const PurchaseModal: React.FC<PurchaseModalProps> = ({
+  open,
+  onOpenChange,
+  onPurchaseComplete,
+  track,
+  modelId,
+  modelName,
+}) => {
   const [selectedPackage, setSelectedPackage] = useState<string>('basic');
   const [step, setStep] = useState<'select-package' | 'payment'>('select-package');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleContinue = () => {
+    track?.("purchase_continue", {
+      cta_label: "Continue",
+      destination: "payment",
+      package_id: selectedPackage,
+      model_id: modelId,
+      model_name: modelName,
+    });
     setStep('payment');
   };
 
   const handlePaymentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    track?.("purchase_submit", {
+      cta_label: "Pay",
+      destination: "checkout",
+      package_id: selectedPackage,
+      model_id: modelId,
+      model_name: modelName,
+    });
     
     // Simulate payment processing
     setTimeout(() => {

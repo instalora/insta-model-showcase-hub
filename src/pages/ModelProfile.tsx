@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -13,6 +13,7 @@ import ModelCard, { Model as ShowcaseModel } from '@/components/ModelCard';
 import { toast } from "@/components/ui/use-toast";
 import { getCachedModel, setCachedModel } from '@/utils/modelCache';
 import { ApiAsset, ApiAssetObject, ApiModel } from '@/types/api';
+import { useAnalytics } from "@/hooks/use-analytics";
 
 type GalleryImage = { id: string; src: string; alt: string; type: 'image' | 'video' };
 
@@ -165,6 +166,18 @@ const ModelProfile = () => {
   const [freeGenerationsLeft, setFreeGenerationsLeft] = useState(2);
   const [maxFreeGenerations] = useState(2);
   const [isPremiumUser, setIsPremiumUser] = useState(false);
+  const { trackEvent } = useAnalytics();
+  const trackModelEvent = useCallback(
+    (name: string, params?: Record<string, unknown>) => {
+      if (!modelData) return;
+      trackEvent(name, {
+        model_id: modelData.id,
+        model_name: modelData.name,
+        ...params,
+      });
+    },
+    [modelData, trackEvent]
+  );
 
   useEffect(() => {
     if (!modelKey) return;
@@ -220,6 +233,10 @@ const ModelProfile = () => {
   }, [modelKey]);
 
   const handleGenerateClick = () => {
+    trackModelEvent("cta_click", {
+      cta_label: "Generate Image",
+      destination: "generation_modal",
+    });
     if (freeGenerationsLeft > 0 || isPremiumUser) {
       setIsGenerationModalOpen(true);
     } else {
@@ -286,6 +303,7 @@ const ModelProfile = () => {
           onGenerateClick={handleGenerateClick}
           freeGenerationsLeft={freeGenerationsLeft}
           maxFreeGenerations={maxFreeGenerations}
+          track={trackModelEvent}
         />
 
         <div className="container mx-auto px-6 md:px-10 py-12 max-w-[1200px]">
@@ -318,6 +336,7 @@ const ModelProfile = () => {
               <ImageGallery
                 images={modelData.images}
                 onGenerateClick={handleGenerateClick}
+                track={trackModelEvent}
               />
             </div>
           </div>
@@ -332,6 +351,15 @@ const ModelProfile = () => {
                     key={campaign.id}
                     to={campaign.url}
                     className="group relative overflow-hidden rounded-2xl bg-muted transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    onClick={() =>
+                      trackModelEvent("campaign_click", {
+                        cta_label: "Featured Campaign",
+                        destination: campaign.url,
+                        campaign_id: campaign.id,
+                        campaign_title: campaign.title,
+                        campaign_brand: campaign.brand,
+                      })
+                    }
                   >
                     <div className="aspect-[16/9] overflow-hidden">
                       <img
@@ -407,7 +435,16 @@ const ModelProfile = () => {
                 <h2 className="text-3xl md:text-4xl font-bold font-display mb-6">
                   Want to be an<br />AI model?
                 </h2>
-                <Link to="/become-model" className="inline-block bg-foreground text-background px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity">
+                <Link
+                  to="/become-model"
+                  className="inline-block bg-foreground text-background px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
+                  onClick={() =>
+                    trackModelEvent("cta_click", {
+                      cta_label: "Become a model",
+                      destination: "/become-model",
+                    })
+                  }
+                >
                   Become a model
                 </Link>
               </div>
@@ -447,12 +484,17 @@ const ModelProfile = () => {
           modelName={modelData.name}
           freeGenerationsLeft={freeGenerationsLeft}
           onGenerate={handleGenerate}
+          track={trackModelEvent}
+          modelId={modelData.id}
         />
 
         <PurchaseModal
           open={isPurchaseModalOpen}
           onOpenChange={setIsPurchaseModalOpen}
           onPurchaseComplete={handlePurchaseComplete}
+          track={trackModelEvent}
+          modelId={modelData.id}
+          modelName={modelData.name}
         />
       </main>
 

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
@@ -10,6 +10,7 @@ import SocialEngagement from '@/components/SocialEngagement';
 import GenerationModal from '@/components/GenerationModal';
 import PurchaseModal from '@/components/PurchaseModal';
 import { toast } from "@/components/ui/use-toast";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 // Mock data
 const modelData = {
@@ -46,8 +47,22 @@ const Index = () => {
   const [freeGenerationsLeft, setFreeGenerationsLeft] = useState(2);
   const [maxFreeGenerations] = useState(2);
   const [isPremiumUser, setIsPremiumUser] = useState(false);
+  const { trackEvent } = useAnalytics();
+  const trackModelEvent = useCallback(
+    (name: string, params?: Record<string, unknown>) =>
+      trackEvent(name, {
+        model_id: modelData.id,
+        model_name: modelData.name,
+        ...params,
+      }),
+    [trackEvent]
+  );
 
   const handleGenerateClick = () => {
+    trackModelEvent("cta_click", {
+      cta_label: "Generate Image",
+      destination: "generation_modal",
+    });
     if (freeGenerationsLeft > 0 || isPremiumUser) {
       setIsGenerationModalOpen(true);
     } else {
@@ -88,6 +103,7 @@ const Index = () => {
           onGenerateClick={handleGenerateClick}
           freeGenerationsLeft={freeGenerationsLeft}
           maxFreeGenerations={maxFreeGenerations}
+          track={trackModelEvent}
         />
         
         <div className="container mx-auto px-4 py-12">
@@ -123,6 +139,7 @@ const Index = () => {
               <ImageGallery 
                 images={modelData.images}
                 onGenerateClick={handleGenerateClick}
+                track={trackModelEvent}
               />
             </div>
           </div>
@@ -162,6 +179,8 @@ const Index = () => {
           modelName={modelData.name}
           freeGenerationsLeft={freeGenerationsLeft}
           onGenerate={handleGenerate}
+          track={trackModelEvent}
+          modelId={modelData.id}
         />
         
         {/* Purchase Modal */}
@@ -169,6 +188,9 @@ const Index = () => {
           open={isPurchaseModalOpen}
           onOpenChange={setIsPurchaseModalOpen}
           onPurchaseComplete={handlePurchaseComplete}
+          track={trackModelEvent}
+          modelId={modelData.id}
+          modelName={modelData.name}
         />
       </main>
       

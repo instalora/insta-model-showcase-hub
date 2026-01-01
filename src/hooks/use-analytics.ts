@@ -7,6 +7,11 @@ import {
   type AnalyticsParams,
 } from "@/utils/analytics"
 
+export type TrackEventFunction = (
+  name: string,
+  params?: AnalyticsParams
+) => void
+
 export const useAnalytics = () => {
   const location = useLocation()
 
