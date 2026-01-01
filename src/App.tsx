@@ -1,9 +1,10 @@
+import { useEffect, useRef } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import Models from "./pages/Models";
 import ModelProfile from "./pages/ModelProfile";
@@ -19,8 +20,27 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import { trackPageView } from "@/utils/analytics";
 
 const queryClient = new QueryClient();
+
+const AnalyticsListener = () => {
+  const location = useLocation();
+  const lastPathRef = useRef<string>();
+
+  useEffect(() => {
+    if (lastPathRef.current === location.pathname) return;
+
+    lastPathRef.current = location.pathname;
+
+    trackPageView(
+      location.pathname,
+      typeof document !== "undefined" ? document.title : undefined
+    );
+  }, [location.pathname]);
+
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -28,6 +48,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <AnalyticsListener />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
