@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAnalytics } from "@/hooks/use-analytics";
+import { LOGIN_URL, SIGNUP_URL } from "@/constants/links";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -129,28 +130,31 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() =>
-              trackEvent("auth_click", {
-                cta_label: "Log in",
-                destination: "/login",
-              })
-            }
-          >
-            Log in
+          <Button variant="outline" size="sm" asChild>
+            <a
+              href={LOGIN_URL}
+              onClick={() =>
+                trackEvent("auth_click", {
+                  cta_label: "Log in",
+                  destination: LOGIN_URL,
+                })
+              }
+            >
+              Log in
+            </a>
           </Button>
-          <Button
-            size="sm"
-            onClick={() =>
-              trackEvent("auth_click", {
-                cta_label: "Sign up",
-                destination: "/signup",
-              })
-            }
-          >
-            Sign up
+          <Button size="sm" asChild>
+            <a
+              href={SIGNUP_URL}
+              onClick={() =>
+                trackEvent("auth_click", {
+                  cta_label: "Sign up",
+                  destination: SIGNUP_URL,
+                })
+              }
+            >
+              Sign up
+            </a>
           </Button>
         </div>
 
@@ -277,28 +281,31 @@ const Header: React.FC = () => {
               About
             </NavLink>
             <div className="flex flex-col space-y-4 mt-8 w-full px-8">
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={() =>
-                  trackEvent("auth_click", {
-                    cta_label: "Log in",
-                    destination: "/login",
-                  })
-                }
-              >
-                Log in
+              <Button variant="outline" className="w-full" asChild>
+                <a
+                  href={LOGIN_URL}
+                  onClick={() =>
+                    trackEvent("auth_click", {
+                      cta_label: "Log in",
+                      destination: LOGIN_URL,
+                    })
+                  }
+                >
+                  Log in
+                </a>
               </Button>
-              <Button
-                className="w-full"
-                onClick={() =>
-                  trackEvent("auth_click", {
-                    cta_label: "Sign up",
-                    destination: "/signup",
-                  })
-                }
-              >
-                Sign up
+              <Button className="w-full" asChild>
+                <a
+                  href={SIGNUP_URL}
+                  onClick={() =>
+                    trackEvent("auth_click", {
+                      cta_label: "Sign up",
+                      destination: SIGNUP_URL,
+                    })
+                  }
+                >
+                  Sign up
+                </a>
               </Button>
             </div>
           </nav>
